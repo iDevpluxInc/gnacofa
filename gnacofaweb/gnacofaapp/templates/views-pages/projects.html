@@ -1,0 +1,99 @@
+{% extends "base.html"%}
+{% load static %}
+{% block title%} Projects {% endblock%}
+{% block content%}
+<section class="bg-white p-2">
+    <br/>
+    <br/>
+    <div class="p-2 container mx-auto  flex flex-wrap gap-6">
+        <!-- General About us -->
+        <div class="text-black " style="width:950px;">
+            <h1 class="text-2xl mb-5 text-green-600 text-center">Projects</h1>
+        </div>
+        <div class="border border-l-2 border-red-600"></div>
+        <div class="p-2" style="width:350px">
+            <div class="mb-5 rounded-lg shadow-lg">
+                <div class="p-2 w-full bg-gradient-to-r from-black to-red-900">
+                    <h1 class="text-white text-center text-lg"> Regional Links </h1>
+                </div>
+                <div class="p-2 w-64 h-96">
+                   <div class="">
+                        <div class="ml-5 list-none">
+                            <li class="list"><a class="hover:text-gray-500" href="#">Ashanti Region</a></li>
+                            <hr/>
+                            <li class="list"><a class="hover:text-gray-500" href="#">Bono Region</a></li>
+                            <hr/>
+                            <li class="list"><a class="hover:text-gray-500" href="#">Bono-East Region</a></li>
+                            <hr/>
+                            <li class="list"><a class="hover:text-gray-500" href="#">Western Rgion</a></li>
+                            <hr>
+                            <li class="list"><a class="hover:text-gray-500" href="#">Western Region</a></li>
+                            <hr/>
+                            <li class="list"><a class="hover:text-gray-500" href="#">Western North Region</a></li>
+                            <hr/>
+                            <li class="list"><a class="hover:text-gray-500" href="#">Volta Region</a></li>
+                            <hr/>
+                            <li class="list"><a class="hover:text-gray-500" href="#">Oti Rgion</a></li>
+                            <hr/>
+                            <li class="list"><a class="hover:text-gray-500" href="#">Central Region</a></li>
+                            <hr/>
+                            <li class="list"><a class="hover:text-gray-500" href="#">Northern Region</a></li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-5 rounded-lg shadow-lg">
+                <div class="p-2 w-full bg-gradient-to-r from-black to-red-900">
+                    <h1 class="text-white text-center text-lg"> Twitter Feesds</h1>
+                </div>
+                <div class="p-2 w-full h-96">
+                    <a href="https://twitter.com/intent/tweet?screen_name=kwame_Av&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-show-count="false">Tweet to @kwame_Av</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+            </div>
+
+            <div class="mb-5  rounded-lg shadow-lg">
+                <div class="p-2 w-full bg-gradient-to-r from-black to-red-900">
+                    <h1 class="text-white text-center text-lg"> Galleries</h1>
+                </div>
+                <div class="p-2 w-full grid  gap-1 grid-cols-3">
+                    <div class="">
+                        <img src="{% static 'workimg/imgs/gard.jpg'%}" class="w-32 h-44" width="3%"/>
+                    </div>
+                    <div class="">
+                        <img src="{% static 'workimg/imgs/nursing.jpg'%}" class="w-32 h-44" width="3%"/>
+                    </div>
+                    <div class="">
+                        <img src="{% static 'workimg/imgs/school.jpg'%}" class="w-32 h-44" width="3%"/>
+                    </div>
+                    
+                    <div class="">
+                        <img src="{% static 'workimg/imgs/gard.jpg'%}" class="w-32 h-44" width="3%"/>
+                    </div>
+                    <div class="">
+                        <img src="{% static 'workimg/imgs/gard.jpg'%}" class="w-32 h-44" width="3%"/>
+                    </div>
+                    <div class="">
+                        <img src="{% static 'workimg/imgs/gard.jpg'%}" class="w-32 h-44" width="3%"/>
+                    </div>
+
+                    <div class="">
+                        <img src="{% static 'workimg/imgs/gard.jpg'%}" class="w-32 h-44" width="3%"/>
+                    </div>
+                    <div class="">
+                        <img src="{% static 'workimg/imgs/gard.jpg'%}" class="w-32 h-44" width="3%"/>
+                    </div>
+                    <div class="">
+                        <img src="{% static 'workimg/imgs/gard.jpg'%}" class="w-32 h-44" width="3%"/>
+                    </div>
+                </div>
+                <div class="rounded-md bg-green-500 shadow-lg">
+                    <h1 class="text-white text-center"><a class="hover:text-red-700" href="#"> >> proceed to view More .... <<< </a></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-2"></div>
+    <div class="p-2"></div>
+</section>
+{%endblock%}

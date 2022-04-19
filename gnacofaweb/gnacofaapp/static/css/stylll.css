@@ -1,0 +1,225 @@
+body{
+   background: url("../workimg/imgs/background.JPG");
+   background-repeat:no-repeat;    
+   background-attachment:fixed;
+   background-size: 100% 100%;             
+}
+
+/******************** END ******************************************/
+
+/************************** NAV Decoration**************/
+.header{
+    background:green;
+    padding:10px;
+    display:flex;
+    justify-content: space-between;
+    opacity:95%
+    
+}
+
+.header .navbar ul{
+    line-height:40px;
+    list-style:none;
+}
+
+.header .navbar ul li{
+    position:relative;
+    float:left;
+    font-size:16px;
+    color:white;
+    display:block;      
+}
+
+.header .navbar ul li a{
+    text-align:center;
+    font-size:16px;
+    display:flex;
+    width:130px;
+    color:white;
+    display:block;
+}
+.header .navbar ul li a:hover{
+    background:white;
+    color:brown;
+}
+
+.header .navbar ul li ul{
+    position:absolute;
+    left:0;
+    padding-top:15px;
+    background:green;
+    display:none;
+}
+.header .navbar ul li ul li{
+    padding:5px;
+    width:100%;
+    border-top:1px solid black;
+}
+.header .navbar ul li:focus-within > ul,
+.header .navbar ul li:hover > ul{
+    display:initial;
+}
+
+#show-menu{
+    display:none;
+}
+
+.header label{
+    font-size:15px;
+    color:white;
+    cursor:pointer;
+    display:none;
+}
+
+
+@media(max-width:991px){
+    .header{
+        padding:10px;
+    }
+
+    .header label{
+        display:initial;
+    }
+
+    .header nav{
+        justify-content:center;
+        top:100%; left:0; right:0;
+        background:green;
+        border-top:1px solid black;
+        display:flex;
+    }
+    .header nav ul li{
+        display:relative;
+        width:100%;
+    }
+    .header nav ul li ul{
+        display:absolute;
+        width:100px;
+    }
+
+    .header nav ul li ul li{
+        background:green;
+    }
+    
+    #show-menu:checked ~ nav{
+        display:initial;
+    }
+    .im{
+        display:none;
+    }
+}
+
+
+/* Home Page */
+
+.list{
+    margin-buttom:5px;
+}
+
+
+
+
+
+
+
+/* FORM STYLES*/
+.bg-wrapper{
+    background:rgb(233, 233, 233);
+    padding: 20px;
+    height: auto;
+}
+.requiredPass{
+    padding: 20px;
+}
+
+
+.btn-sub{
+    align-items: center;
+}
+.main-content{
+    padding: 40px;
+}
+.profile{
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 1px 1px gray;
+}
+.profile legend{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 18px;
+    color: green;
+}
+
+.farm{
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 1px 1px gray;
+}
+.farm legend{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 18px;
+    color: green;
+}
+.control{
+    width: 294px;
+    height: 112px;
+}
+
+.content-section{
+    padding-top:200px;
+    padding-bottom:200px;
+}
+
+.logout-page{
+    border-radius: 10px;    
+    max-width: 500px;
+    
+    background: white;
+}
+
+.background-wrap{
+    background-color:rgb(240, 240, 240);
+    min-height: 400px;
+    padding:"20px"
+}
+
+
+/* Carousel */                  
+
+.carousel-open:checked + .carousel-item {
+    position: static;
+    opacity: 100;
+}
+.carousel-item {
+    transition: opacity 0.6s ease-out;
+    -webkit-transition: opacity 0.6s ease-out;
+}
+#carousel-2:checked ~ .control-2,
+#carousel-1:checked ~ .control-1,
+#carousel-3:checked ~ .control-3 {
+    display: none;
+}
+.carousel-indicators {
+    position: absolute;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    left: 0;
+    bottom: 2%;
+    text-align: center;
+    right: 0;
+    z-index: 10;
+}
+#carousel-1:checked ~ .control-1 ~ .carousel-indicators li:nth-child(1) .carousel-bullet,
+#carousel-2:checked ~ .control-2 ~ .carousel-indicators li:nth-child(2) .carousel-bullet,
+#carousel-3:checked ~ .control-3 ~ .carousel-indicators li:nth-child(3) .carousel-bullet {
+	color: yellow;  /*Set to match the Tailwind colour you want the active one to be */
+}
+
+
+
+
+
+
+
+        

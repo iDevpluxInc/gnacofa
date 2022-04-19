@@ -1,0 +1,631 @@
+{% extends "base.html" %} 
+{% block title %}Member Registration {% endblock %} 
+{% block content %}
+<section class="bg-white p-4">
+  <br><br><br><br>
+  <div class="container mx-auto justify-center bg-gray-200 rounded-xl shadow-lg p-4">
+    <h6 class="text-center text-3xl text-green-700">Welcome to GNaCOFA Membership Registration Page</h6>
+    <p style="text-align:center; color:red;">*All part of this form is do not skip. Thank you*</p>
+    <div class="inner-wrapper">
+      <h5 class="mb-5">You're currently logged in as: <span class="text-red-500 text-xl">{{user.username}}</span> </h5>
+      <form  class="form-group" enctype="multipart/form-data" method="POST" id="add_form">
+        {% csrf_token %}
+        <div class="requiredPass justify-center p-2 rounded-2xl shadow-lg">
+          <div class="flex flex-row p-5 items-center justify-center gap-5">
+            <div class="">
+              <label for="GFX">GFX Number <span class="text-red-700">*</span> </label><br/>
+              <input class="form-input focus:border-green-500 rounded" type="text" placeholder="GFX Number" id="gfxNo" name="gfxNumber" value="GFX"  maxlength="10">
+            </div>
+            <div class="">
+              <label for="Region">Regions <span class="text-red-700">*</span></label><br/>
+                <select class="form-select h-10 rounded focus:border-green-600 w-full" id="region" onchange="select()"  name="region">
+                  <option>Please Select Region</option>
+                  <option value="Ashanti">Ashanti(Kumasi)</option>
+                  <option value="Ahafo">Ahafo(Gaoso)</option>
+                  <option value="Bono">Bono(Sunyani)</option>
+                  <option value="Western">Western(Takoradi)</option>
+                  <option value="WesternNorth">Western North(Sefwi Wiaso)</option>
+                  <option value="Central">Central(Cape Coast)</option>
+                  <option value="BonoEast">Bono East (Techiman)</option>
+                  <option value="Oti">Oti(Dambai)</option>
+                  <option value="Volta">Volta(Ho)</option>
+                  <option value="Eastern">Eastern(Koforidua)</option>
+                </select>
+            </div>
+            <div class="col" id="ashanti"  style="display:none;">
+              <label for="District">District <span class="text-red-700">*</span> </label><br/>
+              <select class="form-select h-10 rounded focus:border-green-600 w-full"  name="district">
+                <option>Please Select district</option>
+                <option value="Adansi North">Adansi North District (map)</option>
+                <option value="Atwima-Mponua ">Atwima-Mponua District</option>
+                <option value="Adansi south">Adansi South District</option>
+                <option value="Afigya-Kwabre">Afigya-Kwabre District</option>
+                <option value="Ahafo-Ano North">Ahafo-Ano North District</option>
+                <option value="Ahafo-Ano South">Ahafo-Ano South District</option>
+                <option value="Amansie Central">Amansie Central District</option>
+                <option value="Amansie West">Amansie West District</option>
+                <option value="Asante-Akim Central Municipal ">Asante-Akim Central Municipal District</option>
+                <option value="Asante-Akim North">Asante-Akim North District</option>
+                <option value="Asante-Akim South">Asante-Akim South District</option>
+                <option value="Asokore-Mampong">Asokore-Mampong Municipal District</option>
+                <option value="Atwima-Kwanwoma">Atwima-Kwanwoma District</option>
+                <option value="Atwima-Nwabiagya">Atwima-Nwabiagya District</option>
+                <option value="Bekwai Municipal">Bekwai Municipal District</option>
+                <option value="Bosome-Freho">Bosome-Freho District</option>
+                <option value="Bosomtwe District">Bosomtwe District</option>
+                <option value="Ejisu-Juaben Municipal ">Ejisu-Juaben Municipal District</option>
+                <option value="Ejura-Sekyedumase">Ejura-Sekyedumase District</option>
+                <option value="Kumasi Metropolitan">Kumasi Metropolitan District</option>
+                <option value="Kumawu">Kumawu District</option>
+                <option value="Kwabre East">Kwabre East District</option>
+                <option value="Mampong Municipal">Mampong Municipal District</option>
+                <option value="Obuasi Municipal">Obuasi Municipal District</option>
+                <option value="Offinso Municipal">Offinso Municipal District</option>
+                <option value="Offinso North ">Offinso North District</option>
+                <option value="Sekyere-Afram">Sekyere-Afram Plains District (map)</option>
+                <option value="">Sekyere Central District</option>
+                <option value="Sekyere East">Sekyere East District</option>
+                <option value="Sekyere South">Sekyere South District (map)</option>
+              </select>
+            </div>
+            <div class="col" id="bono" style="display: none;">
+              <label for="Bono">District <span class="text-red-700">*</span></label><br/>e
+              <select class="form-select h-10 rounded focus:border-green-600 w-full"  id="district" name="district">
+                <option>Please Select district</option>
+                <option value="Banda">Banda District</option>
+                <option value="Berekum East">Berekum East Municipal District</option>
+                <option value="Berekum West">Berekum West Municipal District</option>
+                <option value="Dormaa East">Dormaa East District</option>
+                <option value="Dormaa Central">Dormaa Central Municipal District</option>
+                <option value="Dormaa West">Dormaa West District</option>
+                <option value="Jaman North">Jaman North District</option>
+                <option value="Jaman South">Jaman South District</option>
+                <option value="Sunyani Municipal">Sunyani Municipal District</option>
+                <option value="Sunyani West">Sunyani West District</option>
+                <option value="Tain">Tain District</option>
+                <option value="Wenchi Municipal">Wenchi Municipal District</option>
+              </select>
+            </div>
+            <div class="col" id="ahafo" style="display: none;">
+              <label for="Ahafo">District <span class="text-red-700">*</span></label><br/>
+              <select class="form-select h-10 rounded focus:border-green-600 w-full" id="district"  name="district">
+                <option>Please Select district</option>
+                <option value="Asunafo North">Asunafo North Municipal District</option>
+                <option value="Asunafo South">Asunafo South District</option>
+                <option value="Asutifi">Asutifi District</option>
+                <option value="Asutifi South">Asutifi South District</option>
+                <option value="Atebubu-Amantin">Atebubu-Amantin District</option>
+                <option value="Kintampo North">Kintampo North Municipal District</option>
+                <option value="Kintampo South">Kintampo South District</option>
+                <option value="Nkoranza North ">Nkoranza North District</option>
+                <option value="Nkoranza South">Nkoranza South Municipal District</option>
+                <option value="Pru">Pru District</option>
+                <option value="Sene East">Sene East District</option>
+                <option value="Sene West">Sene West District</option>
+                <option value="Tano North">Tano North District</option>
+                <option value="Tano South">Tano South District</option>
+                <option value="Techiman Municipal">Techiman Municipal District</option>
+                <option value="Techiman North">Techiman North District</option>
+              </select>
+            </div>
+            <div class="col" id="central" style="display: none;">
+              <label for="Central">District <span class="text-red-700">*</span></label><br/>
+              <select class="form-select h-10 rounded focus:border-green-600 w-full" id="district"  name="district">
+                <option>Please Select district</option>
+                <option value="Abura - Asebu - Kwamankese">Abura - Asebu - Kwamankese District</option>
+                <option value="Agona East">Agona East District</option>
+                <option value="Agona West">Agona West Municipal District</option>
+                <option value="Ajumako-Enyan-Essiam">Ajumako-Enyan-Essiam District</option>
+                <option value="Asikuma - Odoben - Brakwa">Asikuma - Odoben - Brakwa District</option>
+                <option value="Assin North">Assin North Municipal District</option>
+                <option value="Assin South">Assin South District</option>
+                <option value="Awutu-Senya">Awutu-Senya District</option>
+                <option value="Awutu Senya East">Awutu Senya East Municipal District</option>
+                <option value="Cape Coast">Cape Coast Metropolitan District</option>
+                <option value="Effutu Municipal">Effutu Municipal District</option>
+                <option value="Ekumfi">Ekumfi District</option>
+                <option value="Gomoa East">Gomoa East District</option>
+                <option value="Gomoa West">Gomoa West District</option>
+                <option value="Komenda-Edina-">Komenda-Edina-</option>
+                <option value="Eguafo-Abrem Municipal">Eguafo-Abrem Municipal District</option>
+                <option value="Mfantseman Municipal">Mfantseman Municipal District</option>
+                <option value="Twifo Atti - Mokwa">Twifo Atti - Mokwa District</option>
+                <option value="Twifo Hemang - Lower Denkyira">Twifo Hemang - Lower Denkyira District</option>
+                <option value="Upper Denkyira East">Upper Denkyira East Municipal District</option>
+                <option value="Upper Denkyira West">Upper Denkyira West District</option>
+              </select>
+            </div>
+            <div class="col" id="" style="display: none;">
+              <label for="District">District *</label><br/>
+              <select class="select" style="display:none;" id="western"  name="district">
+                <option>Please Select district</option>
+                <option value="Ahanta West">Ahanta West District</option>
+                <option value="Ellembelle">Ellembelle District</option>
+                <option value="Jomoro ">Jomoro District</option>
+                <option value="Wassa East">Wassa East District</option>
+                <option value="Mpohor">Mpohor District</option>
+                <option value="Nzema East">Nzema East Municipal District</option>
+                <option value="Prestea-Honi Valley">Prestea-Honi Valley District</option>
+                <option value="Sekondi-Takoradi">Sekondi-Takoradi Metropolitan District</option>
+                <option value="Shama ">Shama District</option>
+                <option value="Tarkwa Nsuaem">Tarkwa Nsuaem Municipal District</option>
+                <option value="Wasa-Amenfi East">Wasa-Amenfi East District</option>
+                <option value="Wasa-Amenfi Central">Wasa-Amenfi Central District</option>
+                <option value="Wasa-Amenfi West ">Wasa-Amenfi West District</option>
+              </select>     
+            </div>
+            <div class="col" id="westernnorth" style="display: none;">
+              <label for="District">District *</label><br/>
+              <select class="form-select h-10 rounded focus:border-green-600 w-full" id="western" name="district">
+                <option>Please Select district</option>
+                <option value="Aowin">Aowin District</option>
+                <option value="Bia">Bia District</option>
+                <option value="Bia East">Bia East District</option>
+                <option value="Bibiani-Anhwiaso-Bekwai">Bibiani-Anhwiaso-Bekwai District</option>
+                <option value="Bodi">Bodi District</option>
+                <option value="Sefwi-Wiawso ">Sefwi-Wiawso District</option>
+                <option value="Yilo Krobo Municipal">Yilo Krobo Municipal District</option>
+                <option value="Suaman">Suaman District</option>
+                <option value="Juaboso">Juaboso District</option>
+                <option value="Sefwi-Akontombra">Sefwi-Akontombra District</option>                    
+              </select>
+            </div>
+            <div class="col" id="volta" style="display: none;">
+              <label for="volta">District *</label><br/>
+              <select class="form-select h-10 rounded focus:border-green-600 w-full" id="voltaRegion" name="district">
+                <option>Please Select district</option>
+                <option value="Keta">Keta</option>
+                <option value="Hohoe">Hohoe</option>
+                <option value="Kpando">Kpando</option>
+                <option value="Ho">Ho</option>
+                <option value="Kadjebi"> Kadjebi</option>
+                <option value="South Tongu"> South Tongu</option>
+                <option value="South Dayi"> South Dayi</option>
+                <option value="Krachi East"> Krachi East</option>
+                <option value="Ketu North"> Ketu North</option>
+                <option value="Nkwanta North">Nkwanta North</option>
+                <option value="Biakoye">Biakoye</option>
+                <option value="Nkwanta South">Nkwanta South</option>
+                <option value="Jasikan">Jasikan</option>
+                <option value="North Dayi">North Dayi</option>
+                <option value="Central Tongu">Central Tongu</option>
+                <option value="Krachi West">Krachi West</option>
+                <option value="Afdzato - South">Afadzato - South</option>
+                <option value="Agortime Zipoe">Agortime Ziope</option>
+                <option value="North Tongu">North Tongu</option>
+                <option value="Akatsi North">Akatsi North</option>
+                <option value="Ho West">Ho West</option>
+                <option value="Krachi Ntsumuru">Krachi Ntsumuru</option>
+                <option value="Adaklu">Adaklu</option>
+                <option value="Akatsi South">Akatsi South</option>
+                <option value="Ketu South">Ketu South</option>
+              </select>
+            </div>
+            <div class="col" id="bonoeast" style="display: none;">
+              <label for="BonoEast">District *</label><br/>
+              <select class="form-select h-10 rounded focus:border-green-600 w-full" id="bonoeastt"  name="district">
+                <option>Please Select district</option>
+                <option value="Atebubu Amantin">Atebubu Amantin Municipal</option>
+                <option value="Kintampo Municipal">Kintampo Municipal</option>
+                <option value="Kintampo South">Kintampo South</option>
+                <option value="Nkronza North">Nkoranza North</option>
+                <option value="Nkronza South Municipal">Nkoranza South Municipal</option>
+                <option value="Pru">Pru</option>
+                <option value="Sene East">Sene East</option>
+                <option value=" Sene West">Sene West</option>
+                <option value="Techiman Municipal">Techiman Municipal</option>
+                <option value="Techiman North">Techiman North</option>
+              </select>
+            </div>
+            <div class="col" id="oti" style="display: none;">
+              <label for="oti">District *</label><br/>
+              <select class="form-select h-10 rounded focus:border-green-600 w-full" id="otii"  name="district">
+                <option>Please Select district</option>
+                <option value="Jasikan District">JASIKAN DISTRICT</option>
+                <option value="Nkwanta South">NKWANTA SOUTH MUNICIPAL</option>
+                <option value="Krachi East Municupal">KRACHI EAST MUNICIPAL</option>
+                <option value="Biakoye District">BIAKOYE DISTRICT</option>
+                <option value="Kadjebi">KADJEBI DISTRICT</option>
+                <option value="Krachi Nchumuru">KRACHI NCHUMURU DISTRICT</option>
+                <option value="Krachi West">KRACHI WEST DISTRICT</option>
+                <option value="Nkwanta North">NKWANTA NORTH DISTRICT</option>
+              </select>
+            </div>
+            <div class="col" id="eastern" style="display: none;">
+              <label for="Eastern">District *</label><br/>
+              <select class="form-select h-10 rounded focus:border-green-600 w-full" id="easternn"  name="district">
+                <option>Please Select district</option>
+                <option value="Akwapim North ">Akwapim North Municipal District</option>
+                <option value="Akwapim South">Akwapim South District</option>
+                <option value="Akyemansa">Akyemansa District</option>
+                <option value="Asuogyaman">Asuogyaman District</option>
+                <option value="Atiwa">Atiwa District</option>
+                <option value="Ayensuano">Ayensuano District</option>
+                <option value="Birim Central">Birim Central Municipal District</option>
+                <option value="Birim North">Birim North District</option>
+                <option value="Birim South">Birim South District</option>
+                <option value="Denkyembour">Denkyembour District</option>
+                <option value="East Akim ">East Akim Municipal District</option>
+                <option value="Fanteakwa">Fanteakwa District</option>
+                <option value="Kwaebibirem">Kwaebibirem District</option>
+                <option value="Kwahu Afram Plains North">Kwahu Afram Plains North District</option>
+                <option value="Kwahu Afram Plains South ">Kwahu Afram Plains South District</option>
+                <option value="Kwahu East">Kwahu East District</option>
+                <option value="Kwahu South">Kwahu South District</option>
+                <option value="Kwahu West ">Kwahu West Municipal District</option>
+                <option value="Lower Manya Krobo">Lower Manya Krobo Municipal District</option>
+                <option value="New Juaben Municipal">New Juaben Municipal District</option>
+                <option value="Nsawam - Adoagyire Municipal ">Nsawam - Adoagyire Municipal District</option>
+                <option value="Suhum Municipal ">Suhum Municipal District</option>
+                <option value="Upper Manya Krobo">Upper Manya Krobo District</option>
+                <option value="Upper West Akim">Upper West Akim District</option>
+                <option value="West Akim Municipal">West Akim Municipal D</option>                           
+              </select>
+            </div>
+            <div class="col">
+              <label for="society">Society *</label><br/>
+              <input class="form-input focus:border-green-500 rounded " type="text" placeholder="Society" name="society" id="society" />
+            </div>
+          </div>
+        </div>
+
+        <div class="main-content">
+          <div class="profile">
+            <fieldset>
+              <legend>A. Personal Profile</legend>
+              <hr>
+              <div class="flex flex-row gap-10 p-5">
+                <div>
+                  <label for="title">Please Select Title *</label><br/>
+                  <select class="form-select h-10 rounded focus:border-green-600 w-full" id="title"  name="title">
+                    <option style="font-style: italic; font-family: poppins;">Select Title</option>
+                    <option value="Opanin">Opanin</option>
+                    <option value="Mr">Mr.</option>
+                    <option value="Mrs">Mrs.</option>
+                    <option value="Miss">Miss</option> 
+                    <option value="Madam">Madam</option>                              
+                    <option value="Dr">Dr.</option>
+                    <option value="Prof">Prof.</option>
+                    <option value="Nana">Nana</option>
+                    <option value="Honourable">Honourable</option>                
+                  </select>
+                </div>
+                <div class="">
+                  <label for="firstname">First Name *</label><br/>
+                  <input class="form-input focus:border-green-500 rounded w-full " type="text" placeholder="First Name" name="firstName" id="firstName" >
+                </div>
+                <div class="col">
+                  <label for="firstname">Middle Name *</label><br/>
+                  <input class="form-input focus:border-green-500 rounded w-full" type="text" placeholder="Middle Name" name="middleName" id="middleName" >
+                </div>
+                <div class="col">
+                  <label for="lastname">Last Name *</label><br/>
+                  <input class="form-input focus:border-green-500 rounded " type="text" placeholder="First Name" name="lastName" id="lastName" >
+                </div>
+                <div class="">
+                  <label for="preferredName"> Preferred Name *</label><br/>
+                  <input class="form-input focus:border-green-500  w-full border-0 border-b-2 bg-transparent " type="text" placeholder="Preferred Name" name="prefName" id="preferredName">
+                </div>
+              </div>
+              
+              <div class="flex flex-row gap-10 p-5">
+                <div class="">
+                  <label for="gender"> Gender *</label><br/>
+                  <select class="form-select h-10 rounded focus:border-green-600 w-full" id="gender"  name="gender">
+                    <option style="font-style: italic; font-family: poppins;">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option> 
+                    <option value="Other">Other</option>              
+                  </select>
+                </div>
+                <div class="">
+                  <label for="Date"> Date of Birth *</label><br/>
+                  <input class="form-input focus:border-green-500 rounded w-full" type="date"  name="date" id="date" date-format="date_time"  placeholder="Name"/>
+                </div>
+                <div class="col">
+                  <label for="address">Address *</label><br/>
+                  <input class="form-input focus:border-green-500 rounded " type="text" placeholder="Address" name="address" id="address">
+                </div>
+                <div class="col">
+                  <label class="edulevel">Educational Level *</label><br/>
+                  <select class="form-select h-10 rounded focus:border-green-600 w-full"  id="education" name="education">
+                    <option style="font-style: italic; font-family: poppins;">Select Educational Level</option>
+                    <option value="Basic Education">Basic Education</option>
+                    <option value="JHS/JSS">JHS/JSS</option>
+                    <option value="Middle School Leaving Certificate">Middle School Leaving Certificate</option>
+                    <option value="High School">High School/Secondary School</option>
+                    <option value="Tertiary">Tertiary Level</option>                
+                  </select>
+                </div>
+                <div class="">
+                  <label for="tel"> Telephone Number *</label><br/>
+                  <input class="form-input focus:border-green-500 rounded " value="+233" type="tel" placeholder="Telephone" name="tel" id="tel">
+                </div>
+                <div class="col">
+                  <label for="hometown">Hometown *</label><br/>
+                  <input type="text" class="form-input focus:border-green-500 rounded" name="hometown" id="hometown" placeholder="Hometown" >
+                </div>
+              </div>
+              <div class="flex flex-row gap-10 p-5">
+                <div class="col">
+                <label class="ID">ID type *</label><br/>
+                <select class="form-select h-10 rounded focus:border-green-600 w-full"  onChange="changeStatus()"  id="id" name="id">
+                    <option style="font-style: italic; font-family: poppins;">Choose I.D Type</option>
+                    <option value="National ID">National ID (Ghana Card)</option>
+                    <option value="Voter's ID'">Voter's ID (either Old or New)</option>
+                    <option value="Ghana Passport">Passport</option>
+                    <option value="NHIS">NHIS Card</option>               
+                  </select>
+                </div>
+                <div class="col" id="idNum" style="display:none;">
+                  <label class="idnumber">ID Number *</label><br/>
+                  <input class="form-input focus:border-green-500 rounded " type="text"  name="idNumber" id="idNumber"  placeholder="I.D Number"/>
+                </div>
+                <div class="col">
+                  <label class="label">Next of Kin *</label><br/>
+                  <input class="form-input focus:border-green-500 rounded " type="text"  name="kinName" id="kinName" placeholder="Next of Kin's Name" />
+                </div>
+                <div class="col">
+                  <label for="relationship"> Relation</label><br/>
+                  <input class="form-input focus:border-green-500 rounded " type="text"   name="kinRelation" id="kinRelation" placeholder="Relationship To you"/>
+                </div>
+                <div class="col">
+                  <label for="contact">Nex of Kin's Number *</label><br/>
+                  <input class="form-input focus:border-green-500 rounded " type="tel"   name="kinNumber" id="kinNumber"  placeholder=" Next of Kin's Number"/>
+                </div>
+              </div>
+              <div class="flex flex-row gap-2">
+                <div class="">
+                  <label for="marriage">Marriage Status *</label><br/>
+                  <select class="form-select h-10 rounded focus:border-green-600 w-full"  id="marriage" onChange="marriageStatus()" name="marriage">
+                    <option style="font-style: italic; font-family: poppins;">Select Marital Status</option>
+                    <option value="single">Single</option>
+                    <option value="Married">Married</option>
+                    <option value="Divorced">Divorced</option>
+                    <option value="Widow">Widow</option>
+                    <option value="Widower">Widower</option>                
+                  </select>
+                </div>
+                <div class="" id="spouseDetails" style="display:none;">
+                  <label for="spouseinfo">spouse Details</label><br/>
+                  <div class="flex flex-wrap gap-2">
+                    <input class="form-input focus:border-green-500 rounded " style="margin-left: 10px;" type="text"  name="spouseName" id=""  placeholder="Spouse Full Name"/>
+                
+                      <input class="form-input focus:border-green-500 rounded " style="margin-left: 20px;" type="text"  name="spouseOccupation" id="spouseOccupation"  placeholder="Spouse Occupation"/>
+
+                      <input class="form-input focus:border-green-500 rounded "style="margin-left: 20px;" type="tel"  name="spouseNumber" id="spouseNumber"  placeholder="Spouse Phone Number"/>
+                  </div>        
+                </div>
+                <div class="col">
+                  <label for="NumberPartners"> No. of Partners *</label><br/>
+                  <input class="form-input focus:border-green-500 rounded " type="number"   name="NumPartners" id="NumPartners" placeholder="Number of Partners"/>
+                </div>
+                <div class="col">
+                  <label for="familySize"> Family Size *</label><br/>
+                  <input class="form-input focus:border-green-500 rounded " type="text"  name="familySize" id="familySize" placeholder="Family Size/Dependents"/>
+                </div>
+              </div>
+              
+              <div class="flex flex-row gap-5">
+                <div class="col">
+                  <label for="image">Upload Picture here *</label><br/>
+                  <input class="form-input focus:border-green-500 rounded " accept=".jpg"  type="file" name="profile" id="profile" />
+                </div>
+              </div>
+
+            </fieldset>
+          </div>
+
+          
+          <br>
+          <div class="farm">
+            <fieldset>
+              <legend>B. Farm Details</legend>
+              <hr>
+              <div id="show_item">
+                <div class=" flex flex-row gap-3">
+                  <div class="col">
+                    <label for="ownerOfFarm">Owner of Farm *</label><br/>
+                    <select class="form-select h-10 rounded focus:border-green-600 w-full" id="farmOwner"  onChange="Ownership()" name="farmOwner">
+                      <option style="font-style: italic; font-family: poppin;">Select Farm Owner</option>
+                      <option value="Self">SELF</option>
+                      <option value="Labourer">Labourer</option>
+                      <option value="Rented">Rented/Lease</option>
+                      <option value="Crop Sharing (DV 2)">Crop Sharing (DV 2)</option>
+                      <option value="Family">Family</option>                                             
+                    </select>
+                  </div>
+
+                  <div class="col" id="numlabour" style="display: none;">
+                    <label for="nlabourers">Number of labourers *</label><br/>
+                    <input type="number" class="form-input focus:border-green-500 rounded" name="nlabourers" id="nlabourers" placeholder="Enter Number of labourers"/>
+                  </div>
+                  <div class="col" id="durr" style="display: none;">
+                    <label for="duration">Duration *</label><br/>
+                    <input type="number" class="form-input focus:border-green-500 rounded " name="duration" id="duration" placeholder="Enter How long"/>
+                  </div>
+                  <div class="col" id="labour" style="display: none;">
+                    <label for="duration">Name of Owner *</label><br/>
+                    <input class="form-input focus:border-green-500 rounded " type="text" name="ownerName" id="ownerName" placeholder="Enter the Owner's Name"/>
+                      <br>
+                    <label for="ownerGFX">Owners GFX</label><br/>
+                    <input class="form-input focus:border-green-500 rounded " typ="text" name="ownerGFX" id="ownerGFX" placeholder="Enter the Owner's GFX Number if any."/>
+                  </div>
+                  <div class="col" id="crDivision" style="display: none;">
+                    <label for="personsInvolved"> How many people *</label><br/>
+                    <input type="number" class="form-input focus:border-green-500 rounded " name="numPeople" id="numPeople" placeholder="Enter number of People"/>
+                  </div>
+
+                  <div class="col" id="family" style="display: none;">
+                    <label for="personsInvolved"> Names of family *</label><br/>
+                    <input type="text" class="form-input focus:border-green-500 rounded " name="familyPeople[]" id="familyPeople" placeholder="Enter names of People"/>
+                  </div>
+
+                  <div class="col">
+                    <label for="cropCultivated">Crop Cultivated</label><br/>
+                    <input class="form-input focus:border-green-500 rounded " type="text"  value="Cocoa" name="cropcultivated"  id="cropcultivated" placeholder="Crop Cultivated"/>
+                  </div>
+                  <div class="col">
+                    <label for="farmSize">Farm Size *</label><br/>
+                    <input class="form-input focus:border-green-500 rounded " type="number"  name="farmSize" id="farmSize" placeholder="Farm Size"/>
+                  </div>
+                  <div class="col">
+                    <label for="farmLocation">Farm Location *</label><br/>
+                    <input class="form-input focus:border-green-500 rounded " type="text"  name="farmLocation" id="farmLocation" placeholder="Farm Size"/>
+                  </div>
+                  <div class="col">
+                    <br>
+                    <input type="button" value="Add More Fields +" class="btn text-white p-2 bg-green-600 hover:bg-green-800 rounded-lg add_item_btn">
+                  </div>
+                </div>
+
+                <br>
+                <div class="flex flex-row gap-5">
+                  <div class="col">
+                    <label for="yearsinFarming">Years in Farming *</label><br/>
+                    <input type="number" class="form-input focus:border-green-500 rounded " name="yearFarming" id="yearFarming" placeholder="Enter number of years in farming" />
+                  </div>
+                  <div class="col">
+                    <label for="yearsinFarming">Any Side Business before Farming *</label><br/>
+                    <select class="form-select h-10 rounded focus:border-green-600 w-full" id="sideBusiness" onChange="Business()"  name="sideBusiness">
+                      <option style="font-style: italic; font-family: poppin;">Any Business before farming?</option>
+                      <option value="Yes">Yes</option>
+                      <option value="No">No</option>                                            
+                    </select>   
+                  </div>
+                  <div class="col" id="sidebuss"  style="display: none;">
+                      <label for="specify"> other, Please specify * </label><br/>
+                      <input class="form-input focus:border-green-500 rounded " type="text"  name="sideBuss" id="sideBuss"  placeholder="if yes, Specify"/>
+                  </div>
+                  <div class="col">
+                    <label for="sideBusiness"> any side busy operating * </label><br/>
+                    <select class="form-select h-10 rounded focus:border-green-600 w-full" id="currentBuss" onChange="currentBusiness()"  name="currentBuss">
+                      <option style="font-style: italic; font-family: poppin;">Any side Business currently Operating?</option>
+                      <option value="Yes">Yes</option>
+                      <option value="No">No</option>                                            
+                    </select>  
+                  </div>
+                  <div class="col" id="currentbuss" style=" display: none;">
+                    <label for="specify"> if yes, Please specify * </label><br/>
+                    <input class="form-inpu rounded form-select h-10 focus:border-green-600 w-full" type="text"  name="sideBuzz" id="sideBuzz"  placeholder="if yes, Specify"/>
+                  </div> 
+                  <div class="col" >
+                    <label for="avgYield"> Average Yield * </label><br/>
+                      <input class="form-input  h-10 rounded focus:border-green-600 w-full"  type="number"  name="averageYield" id="averageYield" placeholder="Average Yield"/>
+                  </div>                   
+                  <div class="col" >
+                    <label for="PrevYield"> Previous yield * </label><br/>
+                    <input class="form-input  rounded focus:border-green-600 w-full" type="number"  name="PrevYield"  id="PrevYield" placeholder="Previous Yield"/>
+                  </div>  
+                </div>
+
+                <br>
+                <div class="row">
+                  <div class="col">
+                    <label for=""> Benefit from Farm *<label><br/>
+                    <input class="form-input focus:border-green-500 rounded " type="text"  name="farmBenefit" id="farmBenefit" placeholder="Benefit From Farm"/>
+                  </div>
+                  <div class="col">
+                    <label for=""> Buyer of Produce *<label><br/>
+                    <input class="form-input focus:border-green-500 rounded "  type="text"  name="buyer" id="buyer" placeholder="Buyer of Produce"/>
+                  </div>
+                  
+                  <div class="col">
+                    <label for=""> How often do you sell to the buyer *<label><br/>                
+                    <select class="form-select h-10 rounded focus:border-green-600 w-full" id="howOften"  name="howOften">
+                      <option style="font-style: italic; font-family: poppin;">How often do you sell to this buyer</option>
+                      <option value="Regular">Regular</option>
+                      <option value="Always">Always</option> 
+                      <option value="Not Often">Regular</option>
+                      <option value="least">Not often<option>
+                    </select>               
+                  </div>                                     
+                  <div class="col">
+                    <label for=""> Benefit from Buyer *<label><br/>
+                    <input class="form-input focus:border-green-500 rounded " type="text"  name="buyerBenefits" id="buyerBenefits" placeholder="Benefit from Buyer"/>
+                  </div>    
+                </div>
+
+              </div>
+            </fieldset>
+          </div>
+
+          <br>
+          <div class="farm">
+            <fieldset>
+              <legend>C. FINANCIAL INFORMATION</legend>
+              <hr>
+              <div class="row">
+                <div class="col">
+                  <label style="color:black;font-size:15px;font-family:poppout;font-style: italic;">In Case of Financial Assiatmce, What would you use the fund for? </label><br/>
+                  <select class="form-select h-10 rounded focus:border-green-600 w-full"  name="usageoffunds">
+                    <option>select here</option>
+                    <option value="Farm Assistance">Farm Assistance</option>
+                    <option value="to extend farm">To extend Farm</option>
+                    <option value="for personal use">For Personal Use</option>
+                    <option value="for housing project">For Housing project</option>
+                    <option value="to solve family issues">To solve family issues</option>
+                  </select>              
+                </div>
+                
+                
+                <div class="col">
+                  <label style="color:black;font-size:15px;font-family:poppout;font-style: italic;">Any Bank Transacting with? *</label><br/> 
+                  <select id="questionBanks" class="form-select h-10 rounded focus:border-green-600 w-full"  onChange="BankTransacting()" name="questionBanks">
+                    <option>select here</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>  
+                </div>
+
+                <div class="col" id="bankTrans" style=" display: none;">
+                  <label for="questionBanks">Specify, if yes</label><br/>
+                  <input class="form-input focus:border-green-500 rounded " type="text"  name="bankT" id="bankT" placeholder="if yes, Specify"/>
+                </div>  
+
+                <div class="col" id="bankTrans">
+                  <label style="color:black;font-size:15px;font-family:poppout;font-style: italic;">How Long: </label><br/>                   
+                  <input class="form-input focus:border-green-500 rounded " type="text"   name="durat" id="durat" placeholder="How Long?"/>
+                </div>   
+              </div>
+            </fieldset>
+          </div>
+
+          <br>
+          <div class="farm">
+            <fieldset>
+              <legend>D. INTEREST</legend>
+              <hr>
+              <div class="row">
+                <div class="col">
+                  <label style="margin-left:20px; color:black;font-size:15px;font-family:poppout;font-style: italic;">Are you interested in GNACOFA Farmer's Association? </label><br/> 
+                  <select id="interest" class="form-select h-10 rounded focus:border-green-600 w-full"  name="interest">
+                    <option>select here</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>  
+                </div>
+                <div class="col">
+                  <label style="color:black;font-size:15px;font-family:poppout;font-style: italic;">Do you belong to any Farmer group/Association? </label><br/> 
+                  <select id="part" class="form-select h-10 rounded focus:border-green-600 w-full"  onChange="partofAssoc()" name="part">
+                    <option>select here</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select> 
+                </div>
+                <div class="col" id="specify">
+                  <label style="margin-left:20px; color:black;font-size:15px;font-family:poppout;font-style: italic;">if yes, specify: </label><br/>                   
+                  <input class="form-input focus:border-green-500 rounded " type="text"  name="specif" id="specif" placeholder="Please, specify"/>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+        <div align="center">
+          <button class="bg-green-600 w-32 p-4 text-white rounded-lg">Submit Form</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,277 @@
+{% load static %}
+{% load tailwind_tags %}
+{% load crispy_forms_tags%}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet"  href="{% static 'css/style.min.css'%}">
+    <link rel="stylesheet"  href="{% static 'css/stylll.css'%}">
+    <link rel="stylesheet"  href="{% static 'css/manage.css'%}">
+    <link rel=" shortcut icon"  href="{% static 'workimg/imgs/logo2.png' type='image/x-icon'%}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    
+    
+    <!---------NEW from react-------->
+    
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- CSS only -->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    
+    <title>{% block title %}Home{% endblock %}</title>
+    {% tailwind_css %}
+  </head>
+  <body>
+    <section class="bg-black  text-white   p-2">
+      <div class="container mx-auto flex items-center justify-center xs:justify-center sm:justify-center ">
+        <div class="flex flex-wrap sm:flex-row md:gap-20 lg:gap-20 xs:gap-5 sm:gap-5 xs:justify-center sm:justify-center justify-between">
+          <div class="flex flex-row gap-2 justify-center mt-3">
+            <h1> follow us on: </h1>
+            <a href="#" class=""><img src="{% static 'workimg/icons/icons8-facebook-48.png'%}" width="50%"/></a>
+            <a href="#" class=""><img class="hover:bg-blue-600" src="{% static 'workimg/icons/icons8-twitter-50.png'%}" width="50%"/></a>
+          </div>
+          <div class="flex flex-wrap">
+            <div class="mt-3">
+              <a href="#" class=""><img src="{% static 'workimg/icons/icons8-clock-64.png'%}" width="50%"/></a>
+            </div>
+            <div>
+              <h1>Working Days: <span>Modays - Fridays </span></h1>
+              <h1 class="text-center">Hours: <span>8:00am - 5:00pm </span></h1>
+            </div>
+          </div>
+          <div class="justify-center flex flex-wrap">
+            <div class="mt-3">
+              <a href="#" class=""><img src="{% static 'workimg/icons/icons8-email-64.png'%}" width="50%"/></a>
+            </div>
+            <div>
+              <h1>Email Address: <span><a href="mailto:president.gnacofa@outlook.com">President.gnacofa@outlook.com</a></span></h1>
+              <h1 class="text-center"><span><a href="mailto:ghgnacofa10@gmail.com">ghgnacofa10@gmail.com</a> </span></h1>
+            </div>
+          </div>
+          <div class="flex flex-wrap">
+            <div class="mt-3 mr-3">
+              <a href="#" class=""><img src="{% static 'workimg/icons/icons8-ringer-volume-24.png'%}" width="100%"/></a>
+            </div>
+            <div>
+              <h1> <span>+233</span> (0) 240 745 381</h1>
+              <h1> <span>+233</span> (0) 240 745 381</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="bg-gradient-to-r from-green-100 to bg-black opacity-70 pt-1 ">
+        <div class="">        
+          <div align="center" class="logo p">
+            <img style="width:15%" src="{% static 'workimg/imgs/comb.png' %}" alt="logo"/>
+            <label class="text-white sm:text-xs lg:text-5xl">Ghana National Cocoa Farmers Association</label><br>
+            <label class="text-green-100 sm:text-xs lg:text-xl text-center mb-2">(GNACOFA)</label>
+          </div>
+          <div class="p-2 lab1 bg-white ">
+              <h6 class="container mx-auto sm:text-sm lg:text-xl text-center">GHANA NATIONAL COCOA FARMER'S ASSOCIATION, P.O.BOX 5984 KUMASI, KWADWOBIOWUOKROM -AKROPONG,  ATWIMA NWABIAGYA DISTRICT, ASHANTI REGION, 00233, Ghana</h6>
+          </div>
+          <div class="p-2 items-end justify-end">
+            <div class="text-white flex  flex-wrap gap-1" >
+              <div class=" bg-black hover:bg-transparent rounded-lg shadow-lg">
+                <a href="{%url 'login'%}"><input type="button" value="Register Member" class="btn p-2 text-white rounded-lg bg-green-600 btn-dark"></a>
+              </div>
+              <div class=" bg-black rounded-lg shadow-lg">
+                <a href="#"><input type="button" value="Member Login" class="p-2 text-red-600 rounded-lg bg-green btn-dark"></a>
+              </div>
+              <div class=" bg-black rounded-lg shadow-lg">
+                <a href="{% url 'admin:index' %}"><input type="button" value="Admin Page" class="btn p-2 text-white rounded-lg bg-green-600 btn-dark"></a>
+              </div>
+              <div class=" bg-black rounded-lg shadow-lg">
+                <a href="{% url 'admin:index' %}"><input type="button" value="Staff Page" class="btn p-2 text-white rounded-lg bg-green-600 btn-dark"></a>
+              </div>
+              <div class=" bg-black rounded-lg shadow-lg">
+                <a href="{% url 'admin:index' %}"><input type="button" value="Admin Page" class="btn p-2 text-white rounded-lg bg-green-600 btn-dark"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    
+    <section class="md:sticky top-0 z-10 justify-center container mx-auto ">
+      <div class="header absolute rounded-b-xl shadow-2xl container mx-auto">
+        <img class="ml-25 im" src="{% static 'workimg/imgs/logo2.png'%}" width="3%"/>
+        <input type="checkbox" id="show-menu" />
+        <label for="show-menu">Menu</label>
+
+        <nav class="navbar">
+          <ul>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'logout'%}">Logout</a></li>
+            {% else %}
+            <li class="active"><a href="{% url 'home'%}">Home</a></li>
+            <li><a href="#">About-us</a>
+              <ul>
+                <li><a href="{% url 'about'%}">About us</a></li>
+                <li><a href="{% url 'our-managment'%}">Management</a></li>
+                <li><a href="{% url 'our-structure'%}">Structure</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Archieves</a>
+              <ul>
+                <li><a href="{% url 'archieves'%}">Archieves</a></li>
+                <li><a href="{% url 'projects'%}">Projects</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Media Center</a>
+              <ul>
+                <li><a href="{% url 'news'%}">News</a></li>
+                <li><a href="{% url 'events'%}">Events</a></li>
+                <li><a href="{% url 'photos'%}">Galleries</a></li>
+              </ul>
+            </li>
+            <li><a href="{% url 'contact-us'%}">Contact-US</a></li>
+            <li><a href="{% url 'faqs'%}">FAQs</a></li>
+            <li><a href="{% url 'covid-update'%}">Covid-19</a></li>
+            {% endif %}
+          </ul>
+        </nav>
+      </div>
+    </section>
+
+    <div class="container mx-auto">
+    {% if messages%}
+      {% for message in messages %}
+        <div class="alert p-3 alert-{{ message.tags}}">
+            {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+    </div>
+    
+    <div class="">{% block content %} {% endblock %}</div>
+    <!-------------------Footer------------------------------------------------------>
+    <section class="bg-gradient-to-r from-black to-green-600 text-lg">
+      <div class="">
+        <div class="justify-center container mx-auto p-5 ">
+          <div class="flex flex-wrap gap-20 p-5 space-between  text-gray-400 shadow-xl rounded-lg ml-15">
+            <div class="">
+              <h4 class="text-red-800">Quick Links</h4>
+              <div class="ml-5 list-none">
+                <li><a class="hover:text-gray-100" href="#">Home</a></li>
+                <hr/>
+                <li><a class="hover:text-gray-100" href="#">About</a></li>
+                <hr/>
+                <li><a class="hover:text-gray-100" href="#">Policy | Privacy</a></li>
+                <hr/>
+                <li><a class="hover:text-gray-100" href="#">FAQs</a></li>
+              </div>
+            </div>
+            <div class="">
+              <h4 class="text-red-800">Other Useful Links</h4>
+              <div class="ml-5 list-none">
+                <li><a class="hover:text-gray-100" href="/">Admin </a></li>
+                <hr/>
+                <li><a class="hover:text-gray-100" href="#">Member Login </a></li>
+                <hr/>
+                <li><a class="hover:text-gray-100" href="#">Archives</a></li>
+                <hr/>
+                <li><a class="hover:text-gray-100"  href="#">Events</a></li>
+                <hr/>
+                <li><a class="hover:text-gray-100" href="#">News</a></li>
+                <hr/>
+                <li><a class="hover:text-gray-100" href="/">Covid-19 Updates</a></li>
+                <hr/>
+                <li><a class="hover:text-gray-100" href="#">Projects</a></li>
+                <hr/>
+                <li><a class="hover:text-gray-100" href="#">Media Partners & Sponsors</a></li>
+                <hr/>
+                <li><a class="hover:text-gray-100" href="#">Other Agency of GNACOFA</a></li>
+              </div>
+            </div>  
+
+             <div class="">
+              <h4 class="text-red-800">Regions Operated Links</h4>
+              <div class="ml-5 list-none">
+                <li><a class="hover:text-gray-100" href="#">Ashanti Region</a></li>
+                <hr/>
+                <li><a class="hover:text-gray-100" href="#">Bono Region</a></li>
+                <hr/>
+                <li><a class="hover:text-gray-100" href="#">Bono-East Region</a></li>
+                <hr/>
+                <li><a class="hover:text-gray-100" href="#">Western Rgion</a></li>
+                <hr>
+                <li><a class="hover:text-gray-100" href="#">Western Region</a></li>
+                <hr/>
+                <li><a class="hover:text-gray-100" href="#">Western North Region</a></li>
+                <hr/>
+                <li><a class="hover:text-gray-100" href="#">Volta Region</a></li>
+                <hr/>
+                <li><a class="hover:text-gray-100" href="#">Oti Rgion</a></li>
+                <hr/>
+                <li><a class="hover:text-gray-100" href="#">Central Region</a></li>
+                <hr/>
+                <li><a class="hover:text-gray-100" href="#">Northern Region</a></li>
+              </div>
+            </div>
+            <div class="">
+              <h4 class="text-red-800">Contact-US</h4>
+              <div class="ml-2 list-none">
+                <h6 class="text-left">GHANA NATIONAL COCOA FARMER'S ASSOCIATION,<br/> P.O.BOX 5984 KUMASI, KWADWOBIOWUOKROM -AKROPONG,  <br/>ATWIMA NWABIAGYA DISTRICT, ASHANTI REGION, 00233, Ghana</h6>
+                <div class="mt-3 mr-3">
+                  <a href="#" class=""><img src="{% static 'workimg/icons/icons8-ringer-volume-24.png'%}" width="5%"/></a>
+                </div>
+                <div>
+                  <h1> <span>+233</span> (0) 240 745 381</h1>
+                  <h1> <span>+233</span> (0) 240 745 381</h1>
+                </div>
+
+
+                <div class="">
+                  <div class="mt-3">
+                    <a href="#" class=""><img src="{% static 'workimg/icons/icons8-email-64.png'%}" width="5%"/></a>
+                  </div>
+                  <div>
+                    <h1><span><a class="hover:text-red-900"href="mailto:president.gnacofa@outlook.com">President.gnacofa@outlook.com</a></span></h1>
+                    <h1 class=""><span><a class="hover:text-red-900" href="mailto:ghgnacofa10@gmail.com">ghgnacofa10@gmail.com</a> </span></h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="bg-black text-white p-4">
+      <div>
+          <div class="container  mx-auto justify-center">
+            <div class="flex flex-row gap-6 justify-between">
+              <div class="">
+                <h6>Copyright &copy; 1992- 2022, Ghana National Cocoa Farmers Association (GNACOFA) <span>All Rights Reserved</span></h6>
+              </div>
+              <div class="flex flex-wrap gap-4 hover:text-green-500">
+                <label class="text-white "><a class="hover:text-green-400" href="#">Home</a></label>
+                <label class="text-white "><a class="hover:text-green-400" href="#">About</a></label>
+                <label class="text-white "><a href="#">FAQs</a></label>
+                <label class="text-white "><a href="#">Contact-US</a></label>
+                <label class="text-white "><a href="#">Privacy | Policy</a></label>
+                <h6 class="text-green-600"><span >Designed by: <a class="text-white hover:text-red-700" href="#">avtex.org</a></span></h6>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'jq.jquery.js'%}"></script>
+    
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'js/index.js'%}"></script>
+  </body>
+</html>
