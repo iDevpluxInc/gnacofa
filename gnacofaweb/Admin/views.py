@@ -11,4 +11,4 @@ from django.contrib import messages
 
 
 def admin_main(request):
-    return render(request, 'main/admin.html')
+    return render(request, 'main/admin-main.html')

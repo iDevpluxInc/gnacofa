@@ -1,0 +1,105 @@
+{% extends "base.html"%}
+{% load static %}
+{% block title%} Adminstrator {% endblock%}
+{% block content%}
+<section class="bg-white">
+    <div class="h-full">
+        <div class="flex flex-row">
+            <div class="w-80 bg-gradient-to-r from-black to-green-700 shadow-lg">
+                <br><br>
+                <div align="center" class="justify-center">
+                    <img src="{% static 'workimg/imgs/logo2.png'%}" style="width: 80px;"/>
+                    <div class="p-2  w-full">
+                        <h1 class="flex justify-center items-center font-Tomatoes text-white font-extrabold text-lg">Gnacofa Administrator Panel</h1>
+                    </div> 
+                </div>
+                
+                <div class="p-2 bg-black">
+                    <div class="flex flex-row">
+                        <div align="center" class="w-24">
+                            <img src="{% static 'workimg/imgs/gard.jpg'%}" class="rounded-full mr-4" width="80%" alt="">
+                        </div>
+                        <div>
+                            <p class="text-base text-gray-300"> Welcome </p>
+                            <label for="name" class="font-bold text-lg text-white">Ernest Aviani</label>
+                            <p class="text-base text-gray-300 flex justify-center"> Position: {Admin} </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-1">
+                    <button class="p-2 w-full bg-green-500 hover:text-white hover:bg-green-800 shadow-lg font-bold font-avalea text-black text-bold">Page Analysis </button>
+                </div>
+                <div class="mt-1">
+                    <button class="p-2 w-full bg-green-500 hover:bg-green-800 hover:text-white font-bold text-left shadow-lg text-black">Dashboard</button>
+                </div>
+                <div class="mt-1">
+                    <button class="p-2 w-full bg-green-500 hover:bg-green-800 hover:text-white font-bold shadow-lg text-black text-left">Portal</button>
+                </div>
+                <div class="mt-1">
+                    <button class="p-2 w-full bg-green-500 hover:bg-green-800 hover:text-white font-bold shadow-lg text-left text-black">Profile</button>
+                </div>
+                <div class="mt-1">
+                    <button class="p-2 w-full bg-green-500 hover:bg-green-800 hover:text-white font-bold shadow-lg text-left text-black">Administrative Manager</button>
+                </div>
+                <div class="mt-1">
+                    <button class="p-2 w-full bg-green-500 hover:bg-green-800 hover:text-white font-bold shadow-lg text-left text-black">Staff</button>
+                </div>
+                <div class="mt-1">
+                    <button class="p-2 w-full bg-green-500 hover:bg-green-800 hover:text-white font-bold shadow-lg text-left text-black">Analysis</button>
+                </div>
+                <div class="mt-1">
+                    <button class="p-2 w-full bg-green-500 hover:bg-green-800 hover:text-white font-bold shadow-lg text-left text-black">Button 1</button>
+                </div>
+                <div class="mt-1">
+                    <button class="p-2 w-full bg-green-500 hover:bg-green-800 hover:text-white font-bold shadow-lg text-left text-black">Button 1</button>
+                </div>
+                <div class="mt-1">
+                    <button class="p-2 w-full bg-green-500 hover:bg-green-800 hover:text-white font-bold shadow-lg text-left text-black">Button 1</button>
+                </div>
+                <br><br><br><br><br><br><br><br><br><br><br><br>
+                <div class="mt-1">
+                    <button class="p-2 w-full bg-green-500 hover:bg-green-800 hover:text-white font-bold shadow-lg text-center text-black">Logout</button>
+                </div>
+            </div>
+            <div class="h-full border-2 border-black ml-2 mr-2"></div>
+            <div class="p-2 mt-20 h-full w-full ml-2">
+                <div class="rounded shadow-lg p-5">
+                    <label for="display" class="text-green-700 text-lg"> Welcome to the Administrative Page of Ghana National Cocoa Farmers Association (GNACOFA-GH)</label>
+                    <hr>
+                    <p class="text-base mt-2">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                        Why do we use it?
+                    </p>
+                </div>
+                <div class="rounded shadow-lg p-5">
+                    <label for="display" class="text-green-700 text-lg">Chart Analysis</label>
+                    <hr>
+                    <p class="text-base mt-2">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                        Why do we use it?
+                    </p>
+                </div>
+                <div class="p-3 mt-3 rounded shadow-lg" style="height: 600px;">
+                    <p class="mb-2 flex justify-center text-green-700 text-xl">Grid style of Menu</p>
+                    <div class="p-5">
+                        <div class="grid grid-cols-4 gap-5">
+                            <button class="p-4 bg-black hover:bg-red-700 hover:text-white text-white text-lg rounded shadow-lg">Member Info & Profile</button>
+                            <button class="p-4 bg-black hover:bg-red-700 hover:text-white text-white text-lg rounded shadow-lg">Dues</button>
+                            <button class="p-4 bg-black hover:bg-red-700 hover:text-white text-white text-lg rounded shadow-lg">Executives</button>
+                            <button class="p-4 bg-black hover:bg-red-700 hover:text-white text-white text-lg rounded shadow-lg">Offices and Location</button>
+                            <button class="p-4 bg-black hover:bg-red-700 hover:text-white text-white text-lg rounded shadow-lg">On-going-Projets</button>
+                            <button class="p-4 bg-black hover:bg-red-700 hover:text-white text-white text-lg rounded shadow-lg">Click me</button>
+                            <button class="p-4 bg-black hover:bg-red-700 hover:text-white text-white text-lg rounded shadow-lg">Click me</button>
+                            <button class="p-4 bg-black hover:bg-red-700 hover:text-white text-white text-lg rounded shadow-lg">Click me</button>
+                            <button class="p-4 bg-black hover:bg-red-700 hover:text-white text-white text-lg rounded shadow-lg">Click me</button>
+                            <button class="p-4 bg-black hover:bg-red-700 hover:text-white text-white text-lg rounded shadow-lg">Click me</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+{%endblock%}
