@@ -1,17 +1,5 @@
 //events and news functions
 
-
-
-
-function deleteNote(noteId) {
-  fetch("/delete-note", {
-    method: "POST",
-    body: JSON.stringify({ noteId: noteId }),
-  }).then((_res) => {
-    window.location.href = "/";
-  });
-}
-
 //document.addEventListener('contextmenu',event => event.preventDefault());
 
 // FUNCTION FOR ID DISPLAY BOX

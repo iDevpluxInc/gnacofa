@@ -1,6 +1,10 @@
 {% extends "base.html" %} 
 {% block title %}Member Registration {% endblock %} 
 {% block content %}
+
+<!-- CSS only -->
+
+
 <section class="bg-white p-4">
   <br><br><br><br>
   <div class="container mx-auto justify-center bg-gray-200 rounded-xl shadow-lg p-4">
@@ -8,14 +12,16 @@
     <p style="text-align:center; color:red;">*All part of this form is do not skip. Thank you*</p>
     <div class="inner-wrapper">
       <h5 class="mb-5">You're currently logged in as: <span class="text-red-500 text-xl">{{user.username}}</span> </h5>
-      <form  class="form-group" enctype="multipart/form-data" method="POST" id="add_form">
+      <form  class="" enctype="multipart/form-data" method="POST" id="add_form">
         {% csrf_token %}
         <div class="requiredPass justify-center p-2 rounded-2xl shadow-lg">
           <div class="flex flex-row p-5 items-center justify-center gap-5">
+
             <div class="">
               <label for="GFX">GFX Number <span class="text-red-700">*</span> </label><br/>
-              <input class="form-input focus:border-green-500 rounded" type="text" placeholder="GFX Number" id="gfxNo" name="gfxNumber" value="GFX"  maxlength="10">
+              <input class="form-input w-full h-10 focus:border-green-500 rounded" type="text" placeholder="GFX Number" id="gfxNo" name="gfxNumber" value="GFX"  maxlength="10">
             </div>
+
             <div class="">
               <label for="Region">Regions <span class="text-red-700">*</span></label><br/>
                 <select class="form-select h-10 rounded focus:border-green-600 w-full" id="region" onchange="select()"  name="region">
@@ -32,6 +38,7 @@
                   <option value="Eastern">Eastern(Koforidua)</option>
                 </select>
             </div>
+
             <div class="col" id="ashanti"  style="display:none;">
               <label for="District">District <span class="text-red-700">*</span> </label><br/>
               <select class="form-select h-10 rounded focus:border-green-600 w-full"  name="district">

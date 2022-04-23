@@ -132,7 +132,12 @@ body{
     padding: 20px;
 }
 
-
+::-webkit-input-placeholder{
+    font-style:italic;
+}
+.form-input{
+    padding:5px;
+}
 .btn-sub{
     align-items: center;
 }

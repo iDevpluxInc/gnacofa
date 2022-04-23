@@ -38,7 +38,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-    'jazzmin',
+    #'jazzmin',
     # 'adminlte3',
     # 'adminlte3_theme',
     'tailwind',
@@ -176,4 +176,5 @@ JAZZMIN_UI_TWEAKS = {
 JAZZMIN_UI_TWEAKS = {
     "custom_css": "common/css/main.css",
     "custom_js": "common/js/main.js"
+
 }
