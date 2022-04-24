@@ -34,7 +34,7 @@
           </div>
           <div class="flex flex-wrap">
             <div class="mt-3">
-              <a href="#" class=""><img src="{% static 'workimg/icons/icons8-clock-64.png'%}" width="50%"/></a>
+              <a href="#" class=""><img src="{% static 'workimg/icons/icons8-clock-64.png'%}" width="40%"/></a>
             </div>
             <div>
               <h1>Working Days: <span>Modays - Fridays </span></h1>
@@ -43,7 +43,7 @@
           </div>
           <div class="justify-center flex flex-wrap">
             <div class="mt-3">
-              <a href="#" class=""><img src="{% static 'workimg/icons/icons8-email-64.png'%}" width="50%"/></a>
+              <a href="#" class=""><img src="{% static 'workimg/icons/icons8-email-64.png'%}" width="30%"/></a>
             </div>
             <div>
               <h1>Email Address: <span><a href="mailto:president.gnacofa@outlook.com">President.gnacofa@outlook.com</a></span></h1>
@@ -73,23 +73,35 @@
           <div class="p-2 lab1 bg-white ">
               <h6 class="container mx-auto sm:text-sm lg:text-xl text-center">GHANA NATIONAL COCOA FARMER'S ASSOCIATION, P.O.BOX 5984 KUMASI, KWADWOBIOWUOKROM -AKROPONG,  ATWIMA NWABIAGYA DISTRICT, ASHANTI REGION, 00233, Ghana</h6>
           </div>
-          <div class="p-2 items-end justify-end">
-            <div class="text-white flex  flex-wrap gap-1" >
-              <div class=" bg-black hover:bg-transparent rounded-lg shadow-lg">
-                <a href="{%url 'login'%}"><input type="button" value="Register Member" class="btn p-2 text-white rounded-lg bg-green-600 btn-dark"></a>
-              </div>
-              <div class=" bg-black rounded-lg shadow-lg">
-                <a href="#"><input type="button" value="Member Login" class="p-2 text-red-600 rounded-lg bg-green btn-dark"></a>
-              </div>
-              <div class=" bg-black rounded-lg shadow-lg">
-                <a href="{% url 'admin:index' %}"><input type="button" value="Admin Page" class="btn p-2 text-white rounded-lg bg-green-600 btn-dark"></a>
-              </div>
-              <div class=" bg-black rounded-lg shadow-lg">
-                <a href="{% url 'admin:index' %}"><input type="button" value="Staff Page" class="btn p-2 text-white rounded-lg bg-green-600 btn-dark"></a>
-              </div>
-              <div class=" bg-black rounded-lg shadow-lg">
-                <a href="{% url 'admin:index' %}"><input type="button" value="Admin Page" class="btn p-2 text-white rounded-lg bg-green-600 btn-dark"></a>
-              </div>
+          <div class="p-2 bg-black flex justify-end">
+            <div class="" >
+              <ul class="flex flex-row gap-2">
+                <li class="rounded p-2 shadow-lg">
+                  <a href="{% url 'admin:index'%}" class="text-white flex justify-center flex-row mt-2 hover:text-green-700 hover:font-underline">
+                    <label><span> << </span>Staff Portal <span> >> </span></label>
+                  </a>
+                </li>
+                <li class="rounded p-2 shadow-lg">
+                  <a href="#" class="text-white flex justify-center flex-row mt-2 hover:text-green-500">
+                    <label><span> >> </span>Member Portal</label>
+                  </a>
+                </li>
+                <li class="rounded p-2 shadow-lg">
+                  <a href="{% url 'login'%}" class="text-white flex justify-center flex-row mt-2 hover:text-green-500">
+                    <label><span> >> </span>Register New Member</label>
+                  </a>
+                </li>
+                <li class="rounded p-2 shadow-lg">
+                  <a href="#" class="text-white flex justify-center flex-row mt-2 hover:text-green-500">
+                    <label><span> >> </span>Staff Login</label>
+                  </a>
+                </li>
+                <li class="rounded p-2 shadow-lg">
+                  <a href="#" class="text-white flex justify-center flex-row mt-2 hover:text-green-500">
+                    <label><span> >> </span>Staff Login</label>
+                  </a>
+                </li>      
+              </ul>
             </div>
           </div>
         </div>
@@ -248,10 +260,10 @@
                 <h6>Copyright &copy; 1992- 2022, Ghana National Cocoa Farmers Association (GNACOFA) <span>All Rights Reserved</span></h6>
               </div>
               <div class="flex flex-wrap gap-4 hover:text-green-500">
-                <label class="text-white "><a class="hover:text-green-400" href="#">Home</a></label>
-                <label class="text-white "><a class="hover:text-green-400" href="#">About</a></label>
-                <label class="text-white "><a href="#">FAQs</a></label>
-                <label class="text-white "><a href="#">Contact-US</a></label>
+                <label class="text-white "><a class="hover:text-green-400" href="{% url 'home'%}">Home</a></label>
+                <label class="text-white "><a class="hover:text-green-400" href="{% url 'about'%}">About</a></label>
+                <label class="text-white "><a href="{% url 'faqs'%}">FAQs</a></label>
+                <label class="text-white "><a href="{% url 'contact-us'%}">Contact-US</a></label>
                 <label class="text-white "><a href="#">Privacy | Policy</a></label>
                 <h6 class="text-green-600"><span >Designed by: <a class="text-white hover:text-red-700" href="#">avtex.org</a></span></h6>
               </div>
