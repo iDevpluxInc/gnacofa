@@ -21,7 +21,7 @@
               <label for="GFX">GFX Number <span class="text-red-700">*</span> </label><br/>
               <input class="form-input w-full h-10 focus:border-green-500 rounded" type="text" placeholder="GFX Number" id="gfxNo" name="gfxNumber" value="GFX"  maxlength="10">
             </div>
-
+            
             <div class="">
               <label for="Region">Regions <span class="text-red-700">*</span></label><br/>
                 <select class="form-select h-10 rounded focus:border-green-600 w-full" id="region" onchange="select()"  name="region">
@@ -70,7 +70,7 @@
                 <option value="Offinso Municipal">Offinso Municipal District</option>
                 <option value="Offinso North ">Offinso North District</option>
                 <option value="Sekyere-Afram">Sekyere-Afram Plains District (map)</option>
-                <option value="">Sekyere Central District</option>
+                <option value="Sekyere Central">Sekyere Central District</option>
                 <option value="Sekyere East">Sekyere East District</option>
                 <option value="Sekyere South">Sekyere South District (map)</option>
               </select>
@@ -299,7 +299,7 @@
                 </div>
                 <div class="">
                   <label for="firstname">First Name *</label><br/>
-                  <input class="form-input focus:border-green-500 rounded w-full " type="text" placeholder="First Name" name="firstName" id="firstName" >
+                  <input class="form-input focus:border-green-500 rounded w-full " type="text" placeholder="First Name" name="firstName" id="firstName">
                 </div>
                 <div class="col">
                   <label for="firstname">Middle Name *</label><br/>
@@ -381,7 +381,7 @@
                   <input class="form-input focus:border-green-500 rounded " type="tel"   name="kinNumber" id="kinNumber"  placeholder=" Next of Kin's Number"/>
                 </div>
               </div>
-              <div class="flex flex-row gap-2">
+              <div class="flex flex-row gap-5 p-5">
                 <div class="">
                   <label for="marriage">Marriage Status *</label><br/>
                   <select class="form-select h-10 rounded focus:border-green-600 w-full"  id="marriage" onChange="marriageStatus()" name="marriage">
@@ -403,9 +403,11 @@
                       <input class="form-input focus:border-green-500 rounded "style="margin-left: 20px;" type="tel"  name="spouseNumber" id="spouseNumber"  placeholder="Spouse Phone Number"/>
                   </div>        
                 </div>
-                <div class="col">
-                  <label for="NumberPartners"> No. of Partners *</label><br/>
-                  <input class="form-input focus:border-green-500 rounded " type="number"   name="NumPartners" id="NumPartners" placeholder="Number of Partners"/>
+                <div  id="np" class="none" style="display: none;">
+                  <div>
+                    <label for="NumberPartners"> No. of Partners *</label><br/>
+                    <input class="form-input focus:border-green-500 rounded " type="number"   name="NumPartners" id="NumPartners" placeholder="Number of Partners"/>
+                  </div>
                 </div>
                 <div class="col">
                   <label for="familySize"> Family Size *</label><br/>

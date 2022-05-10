@@ -9,6 +9,7 @@
     <link rel="stylesheet"  href="{% static 'css/stylll.css'%}">
     <link rel="stylesheet"  href="{% static 'css/manage.css'%}">
     <link rel=" shortcut icon"  href="{% static 'workimg/imgs/logo2.png' type='image/x-icon'%}">
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.5/dist/flowbite.min.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     
     
@@ -92,13 +93,13 @@
                   </a>
                 </li>
                 <li class="rounded p-2 shadow-lg">
-                  <a href="#" class="text-white flex justify-center flex-row mt-2 hover:text-green-500">
-                    <label><span> >> </span>Staff Login</label>
+                  <a href="{% url 'administrator' %}" class="text-white flex justify-center flex-row mt-2 hover:text-green-500">
+                    <label><span> >> </span>Administrator</label>
                   </a>
                 </li>
                 <li class="rounded p-2 shadow-lg">
                   <a href="#" class="text-white flex justify-center flex-row mt-2 hover:text-green-500">
-                    <label><span> >> </span>Staff Login</label>
+                    <label><span> >> </span>Admin Portal</label>
                   </a>
                 </li>      
               </ul>
@@ -140,7 +141,7 @@
                 <li><a href="{% url 'photos'%}">Galleries</a></li>
               </ul>
             </li>
-            <li><a href="{% url 'contact-us'%}">Contact-US</a></li>
+            <li class="bg-red-500 hover:bg-red-700 rounded-lg"><a href="{% url 'contact-us'%}" >Lets Talk</a></li>
             <li><a href="{% url 'faqs'%}">FAQs</a></li>
             <li><a href="{% url 'covid-update'%}">Covid-19</a></li>
             {% endif %}
@@ -149,12 +150,18 @@
       </div>
     </section>
 
-    <div class="container mx-auto">
+    <div class="container mx-auto z-10 absolute">
     {% if messages%}
       {% for message in messages %}
-        <div class="alert p-3 alert-{{ message.tags}}">
-            {{ message }}
-        </div>
+        {% if message.tags == 'success' %}
+          <div class="bg-green-400 border-2 p-2 rounded shadow-lg border-green-600">
+            {{message}}
+          </div>
+        {% elif message.tags == 'error' %}
+          <div class="bg-red-400 border-2 p-2 rounded shadow-lg border-red-600">
+            {{message}}
+          </div>
+        {% endif %}
       {% endfor %}
     {% endif %}
     </div>
@@ -275,8 +282,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{% static 'jq.jquery.js'%}"></script>
-    
+    <script src="https://unpkg.com/flowbite@1.4.5/dist/flowbite.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-    <script type="text/javascript" src="{% static 'js/index.js'%}"></script>
+    <script type="text/javascript" src="{% static 'js/main.js'%}"></script>
   </body>
 </html>

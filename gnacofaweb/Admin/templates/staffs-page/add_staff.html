@@ -1,0 +1,188 @@
+{% extends "main/admin_base.html"%}
+{% load static %}
+{% block title%} Administrator {% endblock%}
+{% block admin %}
+<section class=" w-full">
+    <center>
+        <br><br><br><br><br>
+        <div class="p-2 rounded h-full">
+            <div class="">
+                <h1 class="text-6xl text-red-900"> GNACOFA Staff Addup Page</h1>
+                <form action="#" method="POST" enctype="multipart/form-data" class=" gap-10 p-5">
+                    {% csrf_token %}
+                    <div class="">
+                        <label class="text-left text-xl text-green-600" for="firstName">Staff ID: </label><br>
+                        <input type="text" class="p-2 w-96 border-none rounded border border-b-black font-italic" maxlength="10" placeholder="staff ID name" name="staff_id" required>
+                    </div>
+                    <div class="p-20 border flex flex-row  gap-20">
+                        
+                        <div class="">    
+                            <div class="mt-2">
+                                <label class="text-left text-xl text-green-600" for="firstName">Title: </label><br>
+                                <select class="p-2 w-96 rounded border font-italic" name="title" id="title">
+                                    <option value="" selected>Please select</option>
+                                    <option value="Mr">Mr</option>
+                                    <option value="Mrs">Mrs</option>
+                                    <option value="Miss">Miss</option>
+                                </select>
+                            </div>
+                            <div class="">
+                                <label class="text-left text-xl text-green-600" for="firstName">Last Name: </label><br>
+                                <input type="text" class="p-2 w-96 rounded border font-italic" placeholder="Input first name" name="l_name" required>
+                            </div>
+                            <div class="mt-2">
+                                <fieldset class="border  p-4 gap-2 ">
+                                    <legend>Date of Birth:</legend>
+                                    <div class="flex flex-row">
+                                        <div class="">
+                                            <label class="text-left text-xl text-green-600" for="day">Day: </label><br>
+                                            <input type="text" class="p-2 w-24 rounded border font-italic" maxlength="2" placeholder="Day" name="day" required>
+                                        </div>
+                                        <div class="">
+                                            <label class="text-left text-xl text-green-600" for="firstName">Month:</label><br>
+                                            <select class="p-2 w-48 rounded border font-italic" name="month" id="id_type" required>
+                                                <option value="" selected>Please select Month</option>
+                                                <option value="january">January</option>
+                                                <option value="february">February</option>
+                                                <option value="march">March</option>
+                                                <option value="april">April</option>
+                                                <option value="may">May</option>
+                                                <option value="june">June</option>
+                                                <option value="july">July</option>
+                                                <option value="august">August</option>
+                                                <option value="september">September</option>
+                                                <option value="october">October</option>
+                                                <option value="november">November</option>
+                                                <option value="december">December</option>
+                                            </select>
+                                        </div>
+                                        <div class="">
+                                            <label class="text-left text-xl text-green-600" for="year">Year: </label><br>
+                                            <input type="text" maxlength="4" class="p-2 w-24 rounded border font-italic" placeholder="Enter year " name="year" required>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="mt-2">
+                                <label class="text-left text-xl text-green-600" for="firstName">Address (House/Postal): </label><br>
+                                <input type="text" class="p-2 w-64 rounded border font-italic" placeholder="Enter Address " name="address" required>
+                            </div>
+                            <div class="mt-2">
+                                <label class="text-left text-xl text-green-600" for="firstName">Staff (Position): </label><br>
+                                <select class="p-2 w-96 rounded border font-italic" name="position" id="id_type" required>
+                                    <option value="" selected>Please select Position</option>
+                                    <option value="President">President</option>
+                                    <option value="Vice President">Vice President</option>
+                                    <option value="Secretary">Secretary</option>
+                                    <option value="Manager">Manager</option>
+                                    <option value="Orginzer">Organizer</option>
+                                    <option value="Supervisor">Supervisor</option>
+                                    <option value="Co-ordinator">Co-ordinator</option>
+                                    <option value="HOD for IT Operations">Head of IT Operation (Systems Administrator)</option>
+                                    <option value="Overseas Op.M">Overseas Operations Manager</option>
+                                    <option value="General Op.M">Operations Manager</option>
+                                    <option value="Staff">staff</option>
+                                </select>
+                            </div>
+                            <br><br><br>
+                            <div>
+                                <img src="{% static 'workimg/imgs/gard.jpg' %}" alt=" Profile Picture">
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <div class="">
+                                <label class="text-left text-xl text-green-600" for="firstName">First Name: </label><br>
+                                <input type="text" class="p-2 w-96 rounded border border-b-black font-italic" placeholder="Input first name" name="f_name" required>
+                            </div>
+                            <div class="mt-2">
+                                <label class="text-left text-xl text-green-600" for="firstName">ID Type: </label><br>
+                                <select class="p-2 w-96 rounded border font-italic" name="id_type" id="id_type" required>
+                                    <option value="" selected>Please select</option>
+                                    <option value="ghcard">Ghana Card</option>
+                                    <option value="voterid">Voter's ID</option>
+                                    <option value="Passport">Passport</option>
+                                </select>
+                            </div>
+                            <div class="mt-2">
+                                <label class="text-left text-xl text-green-600" for="firstName">Telephone (+233): </label><br>
+                                <input type="tel" class="p-2 w-96 rounded border font-italic" placeholder="Phone Number" name="phone" required>
+                            </div>
+                            <div class="mt-2">
+                                <label class="text-left text-xl text-green-600" for="firstName">Gender </label><br>
+                                <select class="p-2 w-96 rounded border font-italic" name="gender" id="id_type" required>
+                                    <option value="" selected>Please select</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="mt-2">
+                                <label class="text-left text-xl text-green-600" for="firstName">Department</label><br>
+                                <input type="text" class="p-2 w-96 rounded border font-italic" placeholder="input Department" name="department" required>
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <div class="">
+                                <label class="text-left text-xl text-green-600" for="firstName">Middle Name (if any): </label><br>
+                                <input type="text" class="p-2 w-96 rounded border font-italic" placeholder="Input middle name" name="m_name" required>
+                            </div>
+                            <div class="mt-2">
+                                <label class="text-left text-xl text-green-600" for="idnumber">ID Number: </label><br>
+                                <input type="text" class="p-2 w-96 rounded border font-italic" placeholder="Input ID Number" name="id_number" required>
+                            </div>
+                            <div class="mt-2">
+                                <label class="text-left text-xl text-green-600" for="email">Email Address: </label><br>
+                                <input type="email" class="p-2 w-96 rounded border font-italic" placeholder="Input email Adress in the format: test@tester.com" name="email" required>
+                            </div>
+                            <div class="mt-2">
+                                <label class="text-left text-xl text-green-600" for="password">Password: </label><br>
+                                <input type="password"  class="p-2 w-96 rounded border font-italic" name="password">
+                            </div>
+                            <div class="mt-2">
+                                <input type="file" accept=".jpg, .jpeg, .png" class="p-2 w-96 rounded border font-italic"  name="image" required>
+                            </div>
+                            <br>
+
+                            <fieldset class="border border-black p-5">
+                                <legend class="text-green-700"> Emergency Contact person</legend>
+                                <small><span class="text-red-600">*Note*:</span> this person should be the same as your guarante and can be your parents*</small>
+                                <div class="mt-2">
+                                    <label class="text-left text-xl text-green-600" for="firstName">Emergency contact person: </label><br>
+                                    <input type="text" class="p-2 w-96 rounded border font-italic" placeholder="enter name" name="emergencyperson" required>
+                                </div>
+                                <div class="mt-2">
+                                    <label class="text-left text-xl text-green-600" for="firstName">Relationship: </label><br>
+                                    <input type="text" class="p-2 w-96 rounded border font-italic" placeholder="Enter relationship " name="relation"required>
+                                </div>
+                                <div class="mt-2">
+                                    <label class="text-left text-xl text-green-600" for="firstName">Phone (Emergency Contact person): </label><br>
+                                    <input type="tel" class="p-2 w-96 rounded border font-italic" placeholder="Input phone number" name="emergencycontact" required>
+                                </div>
+                                <div class="mt-2">
+                                    <label class="text-left text-xl text-green-600" for="firstName">Address (House/Postal): </label><br>
+                                    <input type="text" class="p-2 w-96 rounded border font-italic" placeholder="Enter Address " name="emergencyaddress"required>
+                                </div>
+
+                            </fieldset>
+                            
+                            
+                        </div>
+                        
+                    </div>
+                    
+                    
+                    
+
+                    
+                    <!-------------------------------------------------------------->
+                    <div class="mt-4">
+                        <button type="submit" class="p-2 bg-black rounded shadow-lg text-white w-32">Submit | forms</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </center>
+</section>
+{%endblock%}

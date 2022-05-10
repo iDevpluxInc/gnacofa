@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("__reload__/", include("django_browser_reload.urls")),
     path('',include('gnacofaapp.urls')),
+    path('',include('staff.urls')),
     path('members/',include('members.urls')),
     path('Admin/',include('Admin.urls')),
 ]

@@ -1,0 +1,110 @@
+{% extends "main/admin_base.html"%}
+{% load static %}
+{% block title%} Administrator - Staffs {% endblock%}
+{% block admin %}
+<section class="">
+    <div class="p-2">
+        <center>
+            <h1 class="text-3xl text-green-600 uppercase">staff page</h1>
+        </center>
+        <h6>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi, atque explicabo, qui culpa maiores veniam nemo necessitatibus accusamus recusandae placeat quas ratione eligendi quo sint hic eius possimus est voluptatibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro repellat quos voluptas quidem, cum natus quis, explicabo cumque eaque laudantium, enim quasi voluptatibus animi aliquam perferendis sed dolore? Reiciendis, explicabo! Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia autem similique voluptates perferendis ratione modi? Enim similique magni molestias, reiciendis quaerat non optio? Omnis suscipit doloribus velit iure, nihil nostrum.lorem cum natus quis, explicabo cumque eaque laudantium, enim quasi voluptatibus animi aliquam perferendis sed dolore? Reiciendis, explicabo! Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia autem similique voluptates perferendis ratione modi? Enim similique magni molestias, reiciendis quaerat non optio? Omnis suscipit doloribus velit iure, nihil nostrum.lorem </h6>
+    </div>
+    <div class="p-2">
+        <h1 class="text-2xl text-green-600 font-bold">Staff-List</h1>
+
+        <button class="p-2  bg-black text-white  rounded shadow-lg w-32 hover:bg-gray-700   text-center dark:bg-black" type="search" data-modal-toggle="authentication-modal">Search staff</button>
+
+        <button class="p-2 bg-black ml-10 text-white hover:bg-gray-700 rounded shadow-lg w-24"><a href="{% url 'add-staff' %}">Add Staff</a></button>
+
+        <div class="p-2">
+            
+            {% if searched %}
+                <center>
+                    <h2 class="text-left "> Your searched results are: </h2>
+                </center>
+            {%else%}
+                
+            {% endif %}
+        </div>
+
+        <div class=" overflow-auto" style="height: 660px;">
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 sticky top-1">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">ID</th>
+                        <th scope="col" class="px-6 py-3">Staff Number</th>
+                        <th scope="col" class="px-6 py-3">Title</th>
+                        <th scope="col" class="px-6 py-3">Full Name</th>
+                        <th scope="col" class="px-6 py-3">Gender</th>
+                        <th scope="col" class="px-6 py-3">Date of Birth</th>
+                        <th scope="col" class="px-6 py-3">Position</th>
+                        <th scope="col" class="px-6 py-3">Department</th>
+                        <th scope="col" class="px-6 py-3">Email</th>
+                        <th scope="col" class="px-6 py-3">Phone</th>
+                        <th scope="col" class="px-6 py-3">
+                            <span class="sr-only">Edit</span>
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            <span class="sr-only">Edit</span>
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            <span class="sr-only">Edit</span>
+                        </th>
+                    </tr>
+                </thead>
+
+                {% for staff in staff %}
+                <tbody class="">
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4">{{staff.id}}</td>
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">{{staff.staff_id}}</th>
+                        <td class="px-6 py-4">{{staff.title}}</td>
+                        <td class="px-6 py-4">{{staff.firstName }}  {{staff.middleName }} {{staff.lastName}}</td>
+                        <td class="px-6 py-4">{{staff.gender}}</td>
+                        <td class="px-6 py-4">{{staff.day }} {{staff.month }} {{staff.year}} </td>
+                        <td class="px-6 py-4">{{staff.position}}</td>
+                        <td class="px-6 py-4">{{staff.department}}</td>
+                        <td class="px-6 py-4">{{staff.email}}</td>
+                        <td class="px-6 py-4">{{staff.telephone}}</td>
+
+                        
+                        <td class="px-6 py-4 text-right">
+                            <a href="{% url 'show-id' staff.id %}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View Staff</a>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit Staff</a>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>  
+                {% endfor %}         
+            </table>
+        </div>
+
+        <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
+            <div class="relative p-4 w-full max-w-md h-full md:h-auto">
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="authentication-modal">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                    </button>
+                    <div class="py-6 px-6 lg:px-8">
+                        <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Staff search page </h3>
+                        <form class="space-y-6" method="POST" action="{% url 'staff' %}">
+                            {% csrf_token %}
+                            <div>
+                                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Search Staffs</label>
+                                
+                                <input type="text" id="searched" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" maxlength="50" name="searched" placeholder="Please enter staff ID" required>
+                            </div>
+                            
+                            <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">click to search</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>     
+    </div>
+</section>
+{%endblock%}

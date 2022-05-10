@@ -19,9 +19,14 @@ function marriageStatus(){
   if (status1.value =="Married"){
     document.getElementById("spouseDetails").style.display="block";
   }
-
   else{
     document.getElementById("spouseDetails").style.display="none";
+  }
+  if (status1.value == "Divorced") {
+    document.getElementById("np").style.display="none"; 
+  }
+  else{
+    document.getElementById("np").style.display="none"; 
   }
 }
 

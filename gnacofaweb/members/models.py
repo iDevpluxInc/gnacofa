@@ -1,41 +1,43 @@
 from email.policy import default
 from django.db import models
 from django.utils import timezone
+#from sqlalchemy import PrimaryKeyConstraint
 
-#from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 
 
 
 # Create your models here.
 class Member(models.Model):
-    member_gfx = models.CharField(max_length=10)
-    region = models.CharField(max_length=120)
-    district = models.CharField(max_length=120)
-    society = models.CharField(max_length=120)
+    id = models.IntegerField(primary_key=True)
+    member_gfx = models.CharField(max_length=10, null=False)
+    region = models.CharField(max_length=120, null=False)
+    district = models.CharField(max_length=500, null=False)
+    society = models.CharField(max_length=120, null=False)
     title = models.CharField(max_length=20)
     first_name = models.CharField(max_length=120)
     middle_name = models.CharField(max_length=120)
     last_name = models.CharField(max_length=120)
     preferred_name = models.CharField(max_length=120)
     gender = models.CharField(max_length=100)
-    date_of_birth = models.DateTimeField()
+    date_of_birth = models.DateTimeField(null=False)
     address = models.CharField(max_length=120)
-    telephone = models.CharField(max_length=120)
+    telephone = models.CharField(max_length=120, null=False)
     educational_level = models.CharField(max_length=120)
-    hometown = models.CharField(max_length=120)
-    id_type = models.CharField(max_length=120)
-    id_number = models.CharField(max_length=30)
+    hometown = models.CharField(max_length=120, null=False)
+    id_type = models.CharField(max_length=120, null=False)
+    id_number = models.CharField(max_length=30, null=False)
     marriage_status = models.CharField(max_length=120)
-    spoue_name = models.CharField(max_length=120)
-    spouse_occupation = models.CharField(max_length=120)
-    spouse_number = models.CharField(max_length=120)
+    spoue_name = models.CharField(max_length=120, blank=True)
+    spouse_occupation = models.CharField(max_length=120, blank=True)
+    spouse_number = models.CharField(max_length=120, blank=True)
     next_of_kin = models.CharField(max_length=120)
     number_kin = models.CharField(max_length=120)
     relationship_kin = models.CharField(max_length=120)
     number_kin = models.CharField(max_length=120)
-    Num_partners = models.CharField(max_length=30)
+    Num_partners = models.CharField(max_length=30, blank=True)
     family_size = models.CharField(max_length=30)
-    image = models.ImageField(default = 'default.jpg', upload_to='pics')
+    image = models.ImageField(default = 'default.jpg', upload_to='pics', null=False)
     owner_of_farm = models.CharField(max_length=120)
     number_of_labourers = models.CharField(max_length=30)
     duration = models.CharField(max_length=30)
@@ -64,7 +66,7 @@ class Member(models.Model):
     interes_in_gnacofa = models.CharField(max_length=120)
     specify_why = models.CharField(max_length=120)
     date_submitted = models.DateTimeField(default=timezone.now)
-    #author = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    author = models.ForeignKey(User, blank=True, null=True, on_delete=models.SET_NULL)
     
     def __str__(self):
         return self.member_gfx

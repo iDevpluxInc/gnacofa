@@ -1,0 +1,72 @@
+{% extends "main/admin_base.html"%}
+{% load static %}
+{% block title%} Administrator - Dues {% endblock%}
+{% block admin %}
+<section class="">
+    <div class="p-2">
+        <center>
+            <h1 class="text-3xl text-green-600 uppercase">staff page</h1>
+        </center>
+        <h6>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi, atque explicabo, qui culpa maiores veniam nemo necessitatibus accusamus recusandae placeat quas ratione eligendi quo sint hic eius possimus est voluptatibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro repellat quos voluptas quidem, cum natus quis, explicabo cumque eaque laudantium, enim quasi voluptatibus animi aliquam perferendis sed dolore? Reiciendis, explicabo! Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia autem similique voluptates perferendis ratione modi? Enim similique magni molestias, reiciendis quaerat non optio? Omnis suscipit doloribus velit iure, nihil nostrum.lorem cum natus quis, explicabo cumque eaque laudantium, enim quasi voluptatibus animi aliquam perferendis sed dolore? Reiciendis, explicabo! Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia autem similique voluptates perferendis ratione modi? Enim similique magni molestias, reiciendis quaerat non optio? Omnis suscipit doloribus velit iure, nihil nostrum.lorem </h6>
+    </div>
+    <div class="p-2 rounded gap-5">
+        
+        <button class="p-2 bg-black text-white  rounded shadow-lg w-24"><a href="{% url 'add-dues' %}">Add Dues</a></button>
+        <button class="p-2 bg-black text-white  rounded shadow-lg w-24"><a href="#">Add Staff</a></button>
+    </div>
+
+    <div class="p-2">
+        <h1 class="text-2xl text-green-600 font-bold">Staff-List</h1>
+
+        <button class="p-2  bg-black text-white  rounded shadow-lg w-32 hover:bg-gray-700   text-center dark:bg-black" type="search" data-modal-toggle="authentication-modal">Search staff</button>
+        <div class=" overflow-auto" style="height: 760px;">
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 sticky top-1">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">ID</th>
+                        <th scope="col" class="px-6 py-3">Staff Number</th>
+                        <th scope="col" class="px-6 py-3">Title</th>
+                        <th scope="col" class="px-6 py-3">Full Name</th>
+                        <th scope="col" class="px-6 py-3">Gender</th>
+                        <th scope="col" class="px-6 py-3">Marital Status</th>
+                        <th scope="col" class="px-6 py-3">Hometown</th>
+                        <th scope="col" class="px-6 py-3">Number of Farms</th>
+                        <th scope="col" class="px-6 py-3">
+                            <span class="sr-only">Edit</span>
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            <span class="sr-only">Edit</span>
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            <span class="sr-only">Edit</span>
+                        </th>
+                    </tr>
+                </thead>
+
+                
+                <tbody class="">
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4">{{member.id}}</td>
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">{{member.member_gfx}}</th>
+                        <td class="px-6 py-4">{{member.region}}</td>
+                        <td class="px-6 py-4">{{member.society}}</td>
+                        <td class="px-6 py-4">{{member.title}}</td>
+                        <td class="px-6 py-4">{{member.first_name}} {{member.middle_name}} {{member.last_name}}</td>
+                        <td class="px-6 py-4">{{member.gender}}</td>
+                        <td class="px-6 py-4">{{member.marriage_status}}</td>
+                        <td class="px-6 py-4 text-right">
+                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">info</a>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>           
+            </table>
+        </div>    
+    </div>
+</section>
+{%endblock%}
