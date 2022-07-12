@@ -1,0 +1,32 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block title %}login | admin{% endblock %}
+{% block content%}
+<section class="p-10 bg-white">
+    <div class="min-h-screen bg-gray-100 flex flex-col justify-center">
+        <div class="max-w-md w-full mx-auto">
+            <div class="text-center font-bold mt-1 text-green-500 text-3xl">Login | Admin</div>
+            <div class="max-w-md w-full  shadow-lg mx-auto mt-4 bg-white rounded-md p-8 border border-gray-300">
+                <form action="" class="space-y-6" method="POST">
+                    {% csrf_token %}
+                    <div class="">
+                        <label class="font-bold text-sm text-gray-600 block">User Name: </label>
+                        <input type="text" class=" w-full p-2 border border-gray-300 round-lg mt-1" name="username" />
+                    </div>
+                    <div class="">
+                        <label class="font-bold text-sm text-gray-600 block">Password: </label>
+                        <input type="password" class=" w-full p-2 border border-gray-300 round-lg mt-1" name="password" />
+                    </div>
+                    <div class="flex justify-center">
+                        <button type='submit' class="w-full py-2 px-4 bg-green-600 hover:bg-green-900 rounded border border-gray-300 p-2 text-white">Login</button>
+                    </div>
+                </form>
+                <div className=" mt-3">
+                    <label class="font-bold text-sm text-gray-600 block">Having trouble loggin? <span class="text-xl font-bold">Contact your IT Engr. to assist you.</span>Thanks</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+

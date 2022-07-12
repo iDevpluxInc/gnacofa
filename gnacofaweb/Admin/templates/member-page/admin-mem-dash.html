@@ -1,0 +1,110 @@
+{% extends "main/admin_base.html"%}
+{% load static %}
+{% block title%} Adminstrator - Member {% endblock%}
+{% block admin-page %}
+<section class="">
+    <div class="flex flex-row">
+        <div class="p-3 mt-3 ">
+            <p class=" flex justify-center text-green-700 text-xl">Members in a Table form</p>
+            <article>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ex, quis amet deserunt id nisi, incidunt repudiandae ducimus fuga aut accusamus reprehenderit odio libero itaque impedit quas temporibus, et esse? Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit magni molestias distinctio nemo odit quidem doloremque delectus, necessitatibus officia excepturi. Voluptates unde nesciunt laboriosam eos sed voluptas excepturi quisquam consequuntur! Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, at laboriosam nesciunt asperiores minima magnam rerum quasi, excepturi recusandae consequatur corrupti quidem repudiandae omnis voluptate dolor, accusamus tempora itaque fuga! Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum laboriosam corrupti nisi repudiandae nam magni consectetur nulla iusto architecto recusandae iste quo dolor neque eveniet, quisquam in, excepturi maiores! Dicta. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa, fugit dignissimos voluptatibus quia atque commodi, laborum beatae ut nam deleniti eligendi odit illum error optio aliquid. Sed facilis optio rerum?
+            </article>
+            <div class="p-5 rounded-md">
+                <div class="mb-2 flex flex-row">
+                    <form method="POST" action="{% url 'admin-member-dash'%}">
+                        {% csrf_token %}
+                        <label for="search">Search: </label>
+
+                        <input type="search" name="search" id="search" placeholder="Search by GFX number or year of birth" class=" rounded shadow-lg border" maxlength="10">
+
+                        <button type="submit" class="rounded dark:bg-gray-700 hover:bg-gray-600 text-white p-2 w-38">Search</button>
+                    </form>
+
+                    <button type="button" class="rounded ml-10 dark:bg-gray-700 hover:bg-gray-600 text-white p-2 w-38"><a href="{% url 'mem-add' %}"><i class="fa-solid fa-plus mr-3"></i>Add Member</a></button>
+
+                    
+
+
+                    
+                </div>
+                <div class="p-2">
+            
+                    {% if search %}
+                        <center>
+                            <h2 class="text-left "> Your searched results are: </h2>
+                        </center>
+                        {{search}}
+                    {%else%}
+                        
+                    {% endif %}
+                </div>
+                <div class=" overflow-scroll" style="height: 960px; width:1600px">
+                    <table class="w-full text-sm text-left text-black dark:text-black">
+                    <thead class="text-xs text-green-700 uppercase bg-gray-50 dark:bg-green-700 dark:text-gray-400 sticky top-1">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">GFX Number</th>
+                            <th scope="col" class="px-6 py-3">Region of Farmer</th>
+                            <th scope="col" class="px-6 py-3">District of Farmer</th>
+                            <th scope="col" class="px-6 py-3">Society</th>
+                            <th scope="col" class="px-6 py-3">Title</th>
+                            <th scope="col" class="px-6 py-3">Full Name</th>
+                            <th scope="col" class="px-6 py-3">Gender</th>
+                            <th scope="col" class="px-6 py-3">Date of Birth</th>
+                            <th scope="col" class="px-6 py-3">Marital Status</th>
+                            <th scope="col" class="px-6 py-3">Hometown</th>
+                            <th scope="col" class="px-6 py-3">Address</th>
+                            <th scope="col" class="px-6 py-3">Phone Number</th>
+                            <th scope="col" class="px-6 py-3">Number of Farms</th>
+                            <th scope="col" class="px-6 py-3">
+                                <span class="sr-only">View</span>
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                <span class="sr-only">Edit</span>
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                <span class="sr-only">Print</span>
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                <span class="sr-only">Delete</span>
+                            </th>
+                        </tr>
+                    </thead>
+
+                    {% for member in member %}
+                    <tbody class="">
+                        <tr class=" bg-yellow-50 border-b dark:border-gray-700">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-green-600 whitespace-nowrap">{{member.gfxnumber}}</th>
+                            <td class="px-6 py-4">{{member.region}}</td>
+                            <td class="px-6 py-4">{{member.district}}</td>
+                            <td class="px-6 py-4">{{member.society}}</td>
+                            <td class="px-6 py-4">{{member.title}}</td>
+                            <td class="px-6 py-4">{{member.firstname}} {{member.middlename}} {{member.lastname}}</td>
+                            <td class="px-6 py-4">{{member.gender}}</td>
+                            <td class="px-6 py-4">{{member.day}} {{member.month}} {{member.year}}</td>
+                            <td class="px-6 py-4">{{member.marriage}}</td>
+                            <td class="px-6 py-4">{{member.hometown}}</td>
+                            <td class="px-6 py-4">{{member.address}}</td>
+                            <td class="px-6 py-4">{{member.phone}}</td>
+                            <td class="px-6 py-4">{{member.farmnumber}}</td>
+                            <td class="px-6 py-4 text-right">
+                                <a href="{% url 'mem-view' member.gfxnumber %}"><button class="text-xs p-3 w-32 rounded shadow-lg bg-gray-900 hover:bg-gray-700 font-bold text-white"><i class="fa-solid fa-eye mr-2"></i>View</button></a>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <a href="{% url 'mem-edit' member.gfxnumber %}"><button class="text-xs p-3 w-32 rounded shadow-lg bg-red-900 hover:bg-red-700 font-bold text-white"><i class="fa-solid fa-pen-to-square mr-2"></i>Edit</button></a>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <a href="#"><button class="text-xs p-3 w-32 rounded shadow-lg bg-gray-900 hover:bg-gray-700 font-bold text-white"><i class="fa-solid fa-print mr-3"></i>Print</button></a>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <a href="{% url 'mem-delete' member.gfxnumber %}"><button class="text-xs p-3 w-32 rounded shadow-lg bg-red-900 hover:bg-red-700 font-bold text-white"><i class="fa-solid fa-trash mr-3"></i>Delete</button></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    {% endfor %}                 
+                    </table>
+                </div>    
+            </div>
+        </div>
+    </div>
+</section>
+{%endblock%}

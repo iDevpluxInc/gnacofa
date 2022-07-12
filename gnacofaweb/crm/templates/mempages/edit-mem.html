@@ -1,0 +1,418 @@
+{% extends "base.html" %} 
+{% load crispy_forms_tags %}
+{% block title %} staff - Member Edit {% endblock %} 
+{% block content %}
+<section class="bg-white p-4">
+  <br><br><br><br>
+  <div class="p-10">
+    <a href="#">Home</a>
+    <div class="flex flex-wrap">
+      <div class=" bg-gray-100 p-5 rounded">
+        <div class="">
+          <img src="{{member.image.url}}" class="w-32 h-32 border rounded-full" width="10%" alt="">
+          <div class="">
+           <label class="label text-xl text-center text-red-600">{{member.gfxnumber}}</label>
+          </div>
+        </div>
+      </div>
+      <!---------Profile---------->
+      <div class="w-full p-5 rounded shadow-md">
+        {% if user.is_authenticated and user.is_staff and user.is_superuser %}
+          <div class="p-2 flex flex-wrap gap-5">
+            <a href="{% url 'admin-member-dash' %}" class="mr-20">
+              <button class="p-3 bg-blue-900 hover:bg-blue-700 rounded shadow-md text-white"><i class="fa-solid fa-arrow-left-long mr-3"></i></i>Return</button>
+            </a>
+          </div>
+        {% else %}
+          <div>
+            <a href="{% url 'mem-dash' %}" class="mr-20">
+              <button class="p-3 bg-blue-900 hover:bg-blue-700 rounded shadow-md text-white"><i class="fa-solid fa-arrow-left-long mr-3"></i></i>Home/Back</button>
+            </a>
+          </div>
+        {% endif %}
+        <form action="" method="POST" enctype="multipart/form-data" class="space-y-6 p-10">
+          {% csrf_token %}
+          <hr>
+          <div class="">
+            <div class="flex flex-wrap gap-2"> <!-------- flex for the top------------>
+              <div class="">
+                {{form.gfxnumber|as_crispy_field}}
+              </div>
+              <div class="">
+                {{form.region|as_crispy_field}}
+              </div>
+              <div class="">
+                {{form.district|as_crispy_field}}
+              </div>
+              <div class="">
+                {{form.society|as_crispy_field}}
+              </div>
+            </div>
+            <div class="mt-10">
+              <section class="A">
+                <div class="">
+                  <h1 class="text-2xl font-bold text-red-700">PART A - MEMBERS PROFILE INFORMATION</h1>
+                  <hr>
+                  <div class="flex flex-wrap justify-between mt-10">
+                    <div>
+                      {{form.title|as_crispy_field}}
+                    </div>
+                    <div class="overflow-x-scroll">
+                      <div>
+                        <div class="">
+                          {{form.image|as_crispy_field}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap gap-5 mt-5">
+                    <div>
+                      <fieldset class="border rounded p-5">
+                        <legend class="text-green-700 font-bold">Full Name:</legend>
+                        <div class=" flex flex-wrap gap-2 w-full">
+                          <div class="">
+                            {{form.firstname|as_crispy_field}}
+                          </div>
+                          <div class="">
+                            {{form.middlename|as_crispy_field}}
+                          </div>
+                          <div class="">
+                            {{form.lastname|as_crispy_field}}
+                          </div>
+                          <div class="">
+                            {{form.preferredname|as_crispy_field}}
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+                    <div>
+                      <fieldset class="border rounded p-5">
+                        <legend class="text-green-700 font-bold">Date of Birth</legend>
+                        <div class=" flex flex-wrap gap-2 w-full">
+                          <div class="">
+                            {{form.day|as_crispy_field}}
+                          </div>
+                          <div class="">
+                            {{form.month|as_crispy_field}}
+                          </div>
+                          <div class="">
+                            {{form.year|as_crispy_field}}
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap gap-5 mt-5">
+                    <div>
+                      <div class="mt-10">
+                        {{form.gender|as_crispy_field}}
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <div class="mt-10">
+                        {{form.hometown|as_crispy_field}}
+                      </div>
+                    </div>
+                    <div>
+                      <div class="mt-10">
+                        {{form.address|as_crispy_field}}
+                      </div>
+                    </div>
+                    <div>
+                      <div class="mt-10">
+                        {{form.education|as_crispy_field}}
+                      </div>
+                    </div>
+                    <div>
+                      <div class="mt-10">
+                      {{form.idtype|as_crispy_field}}
+                      </div>
+                    </div>
+                    <div>
+                      <div class="mt-10">
+                        {{form.idnum|as_crispy_field}}
+                      </div>
+                    </div>
+                    <div>
+                      <div class="mt-10">
+                        {{form.phone|as_crispy_field}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap gap-5 mt-5">
+                    <div>
+                      <div class="mt-10">
+                        {{form.marriage|as_crispy_field}}
+                      </div>
+                    </div>
+                    <div>
+                      <fieldset class="border rounded p-5">
+                        <legend class="text-green-700 font-bold">Spouse info:</legend>
+                        <h6 class="text-base italic"> if married and spouse still alive, provide info  here:</h6>
+                        <div class=" flex flex-wrap gap-2 w-full">
+                          <div class="">
+                            {{form.spousename|as_crispy_field}}
+                          </div>
+                          <div class="">
+                            {{form.spouseoccupation|as_crispy_field}}
+                          </div>
+                          <div class="">
+                            {{form.spousenumber|as_crispy_field}}
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+                    <div>
+                      <div class="mt-10">
+                        {{form.kinsname|as_crispy_field}}
+                      </div>
+                    </div>
+                    <div>
+                      <div class="mt-10">
+                      {{form.kinsrelationship|as_crispy_field}}
+                      </div>
+                    </div>
+                    <div>
+                      <div class="mt-10">
+                        {{form.kinsnumber|as_crispy_field}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap gap-5 mt-5">
+                    <div>
+                      <div class="mt-10">
+                        {{form.familysize|as_crispy_field}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <br>
+              <section class="B mt-10">
+                <div class="">
+                  <h1 class="text-2xl font-bold text-red-700">PART B - FARM INFORMATION</h1>
+                  <hr>
+                  <div>
+                    <div class="mt-10">
+                      {{form.farmnumber|as_crispy_field}}
+                    </div>
+                    <!---- Main work place-->
+                    <!---- Main work place-->
+                    <div class="mt-5">
+                      <div id="">
+                        <fieldset class="border rounded p-5">
+                          <legend class="text-green-700 font-bold">Farm one Details<span class="text-red-600 italic">(*)</span></legend>
+                          <div>
+                            {{form.farmowner|as_crispy_field}}
+                            <div class=" flex flex-wrap gap-2 w-full">
+                              {{form.crop|as_crispy_field}}
+                              {{form.farmsize|as_crispy_field}}
+                              {{form.location|as_crispy_field}}
+                              {{form.loc_latitude|as_crispy_field}}
+                              {{form.loc_longitude|as_crispy_field}}
+                            </div>
+                          </div>
+                        </fieldset>
+                      </div>
+
+                      <div id="">
+                        <fieldset class="border rounded p-5">
+                          <legend class="text-green-700 font-bold">Farm Two Details<span class="text-red-600 italic">(*)</span></legend>
+                          <div>
+                            {{form.farmowner2|as_crispy_field}}
+                            <div class=" flex flex-wrap gap-2 w-full">
+                              {{form.crop2|as_crispy_field}}
+                              {{form.farmsize2|as_crispy_field}}
+                              {{form.location2|as_crispy_field}}
+                              {{form.loc_latitude2|as_crispy_field}}
+                              {{form.loc_longitude2|as_crispy_field}}
+                            </div>
+                          </div>
+                        </fieldset>
+                      </div>
+
+                      <div id="">
+                        <fieldset class="border rounded p-5">
+                          <legend class="text-green-700 font-bold">Farm Three Details<span class="text-red-600 italic">(*)</span></legend>
+                          <div>
+                            {{form.farmowner3|as_crispy_field}}
+                            <div class=" flex flex-wrap gap-2 w-full">
+                              {{form.crop3|as_crispy_field}}
+                              {{form.farmsize3|as_crispy_field}}
+                              {{form.location3|as_crispy_field}}
+                              {{form.loc_latitude3|as_crispy_field}}
+                              {{form.loc_longitude3|as_crispy_field}}
+                            </div>
+                          </div>
+                        </fieldset>
+                      </div>
+
+                      <div id="">
+                        <fieldset class="border rounded p-5">
+                          <legend class="text-green-700 font-bold">Farm Four Details<span class="text-red-600 italic">(*)</span></legend>
+                          <div>
+                            {{form.farmowner4|as_crispy_field}}
+                            <div class=" flex flex-wrap gap-2 w-full">
+                              {{form.crop4|as_crispy_field}}
+                              {{form.farmsize4|as_crispy_field}}
+                              {{form.location4|as_crispy_field}}
+                              {{form.loc_latitude4|as_crispy_field}}
+                              {{form.loc_longitude4|as_crispy_field}}
+                            </div>
+                          </div>
+                        </fieldset>
+                      </div>
+
+                      <div id="">
+                        <fieldset class="border rounded p-5">
+                          <legend class="text-green-700 font-bold">Farm Five Details<span class="text-red-600 italic">(*)</span></legend>
+                          <div>
+                            {{form.farmowner5|as_crispy_field}}
+                            <div class=" flex flex-wrap gap-2 w-full">
+                              {{form.crop5|as_crispy_field}}
+                              {{form.farmsize5|as_crispy_field}}
+                              {{form.location5|as_crispy_field}}
+                              {{form.loc_latitude5|as_crispy_field}}
+                              {{form.loc_longitude5|as_crispy_field}}
+                            </div>
+                          </div>
+                        </fieldset>
+                      </div>
+                    </div>
+                    <!---- END Main work place-->
+                    <!---- END Main work place-->
+
+                    <div class="flex flex-wrap gap-7 mt-5">
+                      <div>
+                        <div class="mt-5">
+                          {{form.farmingyears|as_crispy_field}}
+                        </div>
+                      </div>
+                      <div>
+                        <div class="mt-5 w-72">
+                        {{form.bbf|as_crispy_field}}
+                        </div>
+                      </div>
+                      <div>
+                        <div class="mt-5 w-72">
+                          {{form.baf|as_crispy_field}}
+                        </div>
+                      </div>
+                      <div>
+                        <div class="mt-5">
+                          {{form.averageyield|as_crispy_field}}
+                        </div>
+                      </div>
+                      <div>
+                        <div class="mt-5">
+                          {{form.previousyield|as_crispy_field}}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex flex-wrap gap-5 mt-5">
+                      <div>
+                        <div class="mt-10">
+                          {{form.farmbenefit|as_crispy_field}}
+                        </div>
+                      </div>
+                      <fieldset class="border rounded p-2">
+                        <legend class="text-green-500 font-bold">Buyer Details</legend>
+                        <div>
+                          <div class="">
+                          {{form.buyerofproduce|as_crispy_field}}
+                          </div>
+                        </div>
+                        <div>
+                          <div class="">
+                          {{form.numberoftimes|as_crispy_field}}
+                          </div>
+                        </div>
+                        <div>
+                          <div class="">
+                            {{form.buyerbenefits|as_crispy_field}}
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <br>
+              <section class="C">
+                <div>
+                  <h1 class="text-2xl font-bold text-red-700">PART C - FINANCIAL INFORMATION</h1>
+                  <hr>
+                  <div>
+                    <div class="flex flex-wrap gap-5 mt-5">
+                      <div>
+                        <div class="mt-10">
+                          {{form.useoffund|as_crispy_field}}
+                        </div>
+                      </div>
+                      <div>
+                        <div class="mt-10">
+                          {{form.transactingbank|as_crispy_field}}
+                        </div>
+                      </div>
+                      <div>
+                        <div class="mt-10">
+                          {{form.duration|as_crispy_field}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <br>
+              <section class="D">
+                <div>
+                  <h1 class="text-2xl font-bold text-red-700">PART D - INTEREST & DECLARATION</h1>
+                  <hr>
+                  <div>
+                    <div class="gap-5 mt-5">
+                      <div>
+                        <div class="mt-10">
+                          {{form.partoffarmers|as_crispy_field}}
+                        </div>
+                      </div>
+                      <div>
+                        <div class="mt-10">
+                          {{form.declaration|as_crispy_field}} <label for="" class="text-xs ml-4 ">I, declare that all the information provided above are <span class="font-bold">True</span> to the best of my knowledge and <span class="font-bold">None</span> of it are <span class="font-bold">False</span></label>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="mt-10">
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+          <div class="p-2">
+            <center class="gap-5 flex flex-wrap">
+              <div>
+                {% if user.is_authenticated and user.is_staff and user.is_superuser %}
+                <div class="">
+                  <a href="{% url 'admin-member-dash'%}"><button class="p-3 rounded shadow-lg  text-white bg-red-800 hover:bg-red-500">Cancel</button></a>
+                </div>
+              {% else %}
+                <div>
+                  <a href="{% url 'mem-dash'%}"><button class="p-3 rounded shadow-lg  text-white bg-red-800 hover:bg-red-500">Cancel</button></a>
+                </div>
+              {% endif %}
+              </div>
+              <div>
+                <button type="submit" class="p-3 rounded shadow-lg  text-white bg-gray-800 hover:bg-gray-500 "><i class="fa-solid fa-pen-to-square mr-2"></i>Click to Update Changes</button>
+              </div>
+            </center>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

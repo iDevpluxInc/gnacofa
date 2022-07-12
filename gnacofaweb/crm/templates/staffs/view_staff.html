@@ -1,0 +1,168 @@
+{% extends "main/admin_base.html"%}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title%} Staff View {% endblock%}
+{% block admin-page %}
+<section class="bg-white p-4">
+  <br><br><br><br>
+  <div class="">
+    <div class="p-2 flex flex-wrap gap-5">
+      <a href="{% url 'staff' %}" class="mr-20">
+        <button class="p-3 bg-blue-900 hover:bg-blue-700 rounded shadow-md text-white"><i class="fa-solid fa-arrow-left-long mr-3"></i></i>Home/Back</button>
+      </a>
+      <a href="{% url 'staff-edit' profile.staff_id %}">
+        <button class="p-3 bg-blue-900 hover:bg-blue-700 rounded shadow-md text-white"><i class="fa-solid fa-pen-to-square mr-3"></i>Edit Staff Profile info.</button>
+      </a>
+      <a href="#">
+        <button class="p-3 bg-pink-900 hover:bg-pink-700 rounded shadow-md text-white"><i class="fa-solid fa-print mr-3"></i> Print Member Details to A4</button>
+      </a>
+      <a href="#">
+        <button class="p-3 bg-blue-900 hover:bg-blue-700 rounded shadow-md text-white"><i class="fa-solid fa-address-card mr-3"></i>Print Staff Card</button>
+      </a>
+    </div>
+    <div class="mt-5 flex flex-wrap">
+      <div class="w-44 p-4">
+        <img src="{{profile.staff_image.url}}" alt="profile_image" width="10%" class="rounded-full h-32 w-32"><br>
+        <center class="font-bold">{{profile.staff_id}}</center>
+      </div>
+      <div>
+        <div class="p-2 rounded h-full">
+          <div class="">
+            <h1 class="text-6xl text-red-900 text-center"> GNACOFA Staff PAGE</h1>
+            <form action="#" method="POST" enctype="multipart/form-data" class=" gap-10 p-5">
+              {% csrf_token %}
+              <div class="p-10">
+                <section class="">
+                  <div class="staffid flex flex-wrap gap-40">
+                    <div>
+                      <label for="" class="text-red-500">Region of Staff:</label><br>
+                      {{profile.region}}
+                    </div>
+                    <div>
+                      <label for="" class="text-red-500">District of Staff:</label><br>
+                      {{profile.district}}
+                    </div>
+                    <div>
+                      <label for="" class="text-red-500">Society of Staff:</label><br>
+                      {{profile.society}}
+                    </div>
+                    <div>
+                      <label for="" class="text-red-500">Username:</label><br>
+                      {{profile.access_user}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="mt-5">
+                    <label for="" class="text-red-500">Title:</label><br>
+                    {{profile.title}}
+                  </div>
+                  <div class="flex flex-wrap gap-20">
+                    <div class="mt-10">
+                      <label for="" class="text-red-500">First Name:</label><br>
+                      {{profile.firstName}}
+                    </div>
+                    <div class="mt-10">
+                      <label for="" class="text-red-500">Middle Name:</label><br>
+                      {{profile.middleName}}
+                    </div>
+                    <div class="mt-10">
+                      <label for="" class="text-red-500">Last Name</label><br>
+                      {{profile.lastName}}
+                    </div>
+                    <fieldset class="rounded border p-5">
+                      <legend>Date of Birth</legend>
+                      <div class="flex flex-wrap gap-20">
+                          <div>
+                            <label for="" class="text-red-500">Day:</label><br>
+                            {{profile.day}}
+                          </div>
+                          <div>
+                            <label for="" class="text-red-500">Month:</label><br>
+                            {{profile.month}}
+                          </div>
+                          <div>
+                            <label for="" class="text-red-500">Year:</label><br>
+                            {{profile.year}}
+                          </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                  <div class="flex flex-wrap gap-5">
+                    <div class="mt-12 flex flex-wrap gap-10">
+                      <div>
+                        <label for="" class="text-red-500">Gender:</label><br>
+                        {{profile.gender}}
+                      </div>
+                      <div>
+                        <label for="" class="text-red-500">ID Type:</label><br>
+                        {{profile.id_type}}
+                      </div>
+                      <div>
+                        <label for="" class="text-red-500">ID Number:</label><br>
+                        {{profile.id_number}}
+                      </div>
+                      <div>
+                        <label for="" class="text-red-500">Profile Pic:</label><br>
+                        {{profile.staff_image}}
+                      </div>
+                      <div>
+                        <label for="" class="text-red-500">Hometown:</label><br>
+                        {{profile.hometown}}
+                      </div>
+                      <div>
+                        <label for="" class="text-red-500">Home Region:</label><br>
+                        {{profile.home_region}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap gap-20 mt-5">
+                    <div>
+                      <label for="" class="text-red-500">Telephone:</label><br>
+                      {{profile.telephone}}
+                    </div>
+                    <div>
+                      <label for="" class="text-red-500">Address:</label><br>
+                      {{profile.address}}
+                    </div>
+                    <div>
+                      <label for="" class="text-red-500">Department:</label><br>
+                      {{profile.department}}
+                    </div>
+                    <div>
+                      <label for="" class="text-red-500">Position:</label><br>
+                      {{profile.position}}
+                    </div>
+                  </div>
+                  <div class="mt-5">
+                    <fieldset class="rounded border p-5">
+                      <legend>Emergency Contact Person</legend>
+                      <div class="flex flex-wrap gap-20">
+                        <div>
+                          <label for="" class="text-red-500">Person:</label><br>
+                          {{profile.emergency_person}}
+                        </div>
+                        <div>
+                          <label for="" class="text-red-500">Phone:</label><br>
+                          {{profile.emergency_phone}}
+                        </div>
+                        <div>
+                          <label for="" class="text-red-500">Relationship:</label><br>
+                          {{profile.relationship}}
+                        </div>
+                        <div>
+                          <label for="" class="text-red-500">Address:</label><br>
+                          {{profile.emergency_address}}
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                </section>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -25,7 +25,6 @@ urlpatterns = [
     path('',include('gnacofaapp.urls')),
     path('',include('staff.urls')),
     path('members/',include('members.urls')),
+    path('crm/',include('crm.urls')),
     path('Admin/',include('Admin.urls')),
-]
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

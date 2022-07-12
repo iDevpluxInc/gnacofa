@@ -1,0 +1,31 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block title %}login | admin{% endblock %}
+{% block content%}
+<section class="p-10 bg-white">
+    <div class="min-h-screen bg-gray-100 flex flex-col justify-center">
+        <div class="max-w-md w-full mx-auto">
+            <div class="text-center font-bold mt-1 text-red-900 text-3xl">Logi | Admin</div>
+            <div class="max-w-md w-full  shadow-lg mx-auto mt-4 bg-white rounded-md p-8 border border-gray-300">
+                <form action="" class="space-y-6" method="POST">
+                    <div class="">
+                        <label class="font-bold text-sm text-gray-600 block">Email Name: </label>
+                        <input type="email" class=" w-full p-2 border border-gray-300 round-lg mt-1" />
+                    </div>
+                    <div class="">
+                        <label class="font-bold text-sm text-gray-600 block">Password: </label>
+                        <input type="password" class=" w-full p-2 border border-gray-300 round-lg mt-1" />
+                    </div>
+                    <div class="flex justify-center">
+                        <button type='submit' class="w-full py-2 px-4 bg-red-600 hover:bg-red-800 rounded border border-gray-300 p-2 text-white">Login</button>
+                    </div>
+                </form>
+                <div className=" mt-3">
+                    <label class="font-bold text-sm text-gray-600 block">Don't have an Account?<a class="ml-1 hover:text-red-300" href="/">Click Here</a> to sign up</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+

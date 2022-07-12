@@ -1,0 +1,45 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block title %} Member Dashboard {% endblock %}
+{% block content%}
+<section class="bg-white ">
+    <br><br><br><br>
+    <div>
+        <div class="p-5 shadow-lg">
+            <div class="flex flex-wrap justify-between">
+                <div class="ml-20 mt-5">
+                    <p><h1 class="text-red-700">GFX Number ID:<span class="ml-5 text-green-700 text-xl font-bold">GFX001010101</span></h1></p>
+                </div>
+                <div class="mt-5">
+                    <p>Name: <span class="ml-5 text-green-700 text-xl font-bold">Ernest Aviani</span> </p>
+                </div>
+                <div class="flex flex-wrap gap-2 mr-10">
+                    <img src="{% static 'workimg/imgs/gard.jpg'%}" width="10%" class="rounded-full w-16 h-16" alt="">
+                    <a href="#" class="mt-5"><button><i class="fa-solid fa-right-from-bracket mr-2"></i>logout</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="p-10">
+        <p class="text-xl font-bold">Member Dashboard</p>
+        <center>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident temporibus amet, enim dolor adipisci aperiam rerum consequuntur, veritatis placeat similique necessitatibus cupiditate sunt labore. Deserunt culpa quae obcaecati laborum cumque! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores dolorem sint laboriosam ab consequatur, incidunt doloribus obcaecati ut tempore, similique, minus dolore consectetur eaque quisquam eos et totam delectus tempora? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur earum iusto nulla, nam repellat nihil amet! Id nemo nobis labore, vitae inventore architecto veniam ipsam, voluptas rem natus sunt magnam! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae nobis vitae ratione fugiat aliquid. Tempore assumenda dignissimos obcaecati voluptatem eligendi! Quae nam maiores, consectetur animi labore eaque amet accusamus ullam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum deleniti aspernatur quaerat velit unde ipsum vel voluptates ad sunt officia cumque nisi dolorem iure corporis, sit temporibus laudantium iste laboriosam! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae enim id, harum nihil eaque ut, veritatis molestiae sunt porro, tempora iusto similique voluptas repudiandae corrupti aspernatur optio pariatur ullam commodi.</p>
+        </center>
+    </div>
+    <hr>
+    <hr>
+    <div class="">
+        <div class="flex flex-wrap p-2">
+            <div class="p-2 rounded bg-gray-300 h-full">
+                <a href="{% url 'member-profile'%}"><button class="p-2 w-52 text-2xl  bg-gray-900 hover:bg-gray-600 rounded shadow-xl text-white"><i class="fa-solid fa-eye mr-3"></i>View Profile</button></a><br><hr>
+                <a href="#"><button class="p-2 w-52 text-2xl  bg-gray-900 hover:bg-gray-600 rounded shadow-xl text-white"><i class="fa-solid fa-cedi-sign mr-3"></i>View Dues payment</button></a><br><hr>
+                <a href="#"><button class="p-2 w-52 text-2xl  bg-gray-900 hover:bg-gray-600 rounded shadow-xl text-white"><i class="fa-solid fa-landmark mr-3"></i>View Loans</button></a><br><hr>
+                <a href="#"><button class="p-2 w-52 text-2xl  bg-gray-900 hover:bg-gray-600 rounded shadow-xl text-white"><i class="fa-solid fa-eye mr-3"></i>Make a request / suggestion</button></a><br>
+            </div>
+            <div class="p-2">{% block member %}{% endblock %}</div>
+        </div>
+    </div>
+</section>
+{% endblock %}

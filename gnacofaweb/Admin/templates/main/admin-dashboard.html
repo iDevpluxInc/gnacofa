@@ -1,0 +1,105 @@
+{% extends "main/admin_base.html"%}
+{% load static %}
+{% block title%} Administrator - Dashboard {% endblock%}
+{% block admin-page %}
+<section class="bg-white p-4">
+    <p class="text-3xl text-red-900 uppercase font-bold">gnacofa Administrative page</p>
+    <p class="text-lg  text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio cupiditate rerum qui unde quidem eveniet assumenda dicta voluptatem voluptatum. Doloremque dicta illo ipsum adipisci officiis ullam harum nulla atque dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt aut doloribus asperiores totam! Ad nam quisquam tempore, dolor incidunt praesentium iusto fuga! Molestiae voluptatum consectetur temporibus perferendis, magni obcaecati. Voluptatem? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate maiores eveniet neque. Eos ea animi laboriosam, illo ipsam obcaecati nesciunt nemo et a veniam perferendis id itaque natus, architecto nam.</p>
+    <hr>
+    <div class="p-2">
+        <div class="mt-2">
+            <div class="p-2 bg-green-500">
+                <h1 class="text-3xl font-bold text-white"> Page Statistics </h1>
+            </div>
+            <div class="ml-20 p-10 grid grid-cols-3 gap-5">
+                <div>
+                    <a href="#">
+                        <div class="max-w-sm rounded border overflow-hidden shadow-lg mt-5">
+                            <div class="p-2 text-green-500 flex flex-row justify-between">
+                                <div class="">
+                                    <p class="text-6xl">{{staff_count}}</p>
+                                    <label for="" class="text-2xl font-bold">Staff</label>
+                                </div>
+                                <div class="mt-5">
+                                    <i class="fa-solid fa-people-roof mr-10 text-6xl"></i>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="px-6 pt-4 pb-2 text-xs">
+                                <label for="">No. of Males<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#6000</span></label>
+                                <label for="">No of Females<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#50000</span></label>
+                            </div>
+                        </div>
+                    </a>
+                    
+                </div>
+                <div>
+                    <a href="{% url 'admin-member-dash'%}">
+                        <div class="max-w-sm rounded border overflow-hidden shadow-lg mt-5">
+                            <div class="p-2 text-green-500 flex flex-row justify-between">
+                                <div class="">
+                                    <p class="text-6xl">{{member_all_count}}</p>
+                                    <label for="" class="text-2xl font-bold">Members</label>
+                                </div>
+                                <div class="mt-5">
+                                    <i class="fa-solid fa-people-group mr-10 text-6xl"></i>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="px-6 pt-4 pb-2 text-xs">
+                                <label for="">No. of Males<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#6000</span></label>
+                                <label for="">No of Females<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#50000</span></label>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div>
+                    <a href="#">
+                        <div class="max-w-sm rounded border overflow-hidden shadow-lg mt-5">
+                            <div class="p-2 text-green-500 flex flex-row justify-between">
+                                <div class="">
+                                    <p class="text-6xl">5</p>
+                                    <label for="" class="text-2xl font-bold">Staff</label>
+                                </div>
+                                <div class=" mt-5">
+                                    <i class="fa-solid fa-people-roof mr-10 text-6xl"></i>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="px-6 pt-4 pb-2 text-xs">
+                                <label for="">No. of Males<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#6000</span></label>
+                                <label for="">No of Females<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#50000</span></label>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <hr>
+            <div class="p-10">
+                <p class="text-3xl font-bold text-green-700 text-center">Records Visualization and Download Section</p>
+                <br>
+                <div>
+                    <p class="font-bold">Records Download Area</p>
+                    <hr>
+                    <div class="mt-5">
+                        <a href="{% url 'mem-csv' %}"><button type="button" class="rounded ml-10 dark:bg-gray-700 hover:bg-gray-600 text-white p-4 w-38"><i class="fa-solid fa-file-arrow-down ml-3 mr-3"></i>Download <span class="text-lg font-bold ">Member</span> Data in Excel format</button></a>
+
+                        <a href="{% url 'mem-csv' %}"><button type="button" class="rounded ml-10 dark:bg-gray-700 hover:bg-gray-600 text-white p-4 w-38"><i class="fa-solid fa-file-arrow-down ml-3 mr-3"></i>Download <span class="text-lg font-bold ">Staff</span> Data in Excel format</button></a>
+
+                        <a href="{% url 'mem-csv' %}"><button type="button" class="rounded ml-10 dark:bg-gray-700 hover:bg-gray-600 text-white p-4 w-38"><i class="fa-solid fa-file-arrow-down ml-3 mr-3"></i>Download <span class="text-lg font-bold ">Branches</span> Data in Excel format</button></a>
+                        
+                    </div>
+                </div>
+                <div class="mt-10">
+                    <p>Records Visualization Area</p>
+                    <div class="">
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+{%endblock%}
+

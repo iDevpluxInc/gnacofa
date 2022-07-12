@@ -1,0 +1,533 @@
+{% extends "base.html" %} 
+{% block title %} staff - Member View {% endblock %} 
+{% block content %}
+<section class="bg-white p-4">
+  <br><br><br><br>
+  <div class="p-2">
+    <div class="flex flex-wrap">
+      <div class=" bg-gray-100 p-5 rounded">
+        <div class="">
+          <img src="{{member.image.url}}" class="w-32 h-32 border rounded-full" width="10%" alt="">
+          <div class="">
+           <label class="label text-xl text-center text-red-600">{{member.gfxnumber}}</label>
+          </div>
+        </div>
+      </div>
+      <!---------Profile---------->
+      <div class="w-full p-5 rounded shadow-md">
+
+        {% if user.is_authenticated and user.is_staff and user.is_superuser %}
+          <div class="p-2 flex flex-wrap gap-5">
+            <a href="{% url 'admin-member-dash' %}" class="mr-20">
+              <button class="p-3 bg-blue-900 hover:bg-blue-700 rounded shadow-md text-white"><i class="fa-solid fa-arrow-left-long mr-3"></i></i>Home/Back</button>
+            </a>
+            <a href="{% url 'mem-edit' member.gfxnumber %}">
+              <button class="p-3 bg-blue-900 hover:bg-blue-700 rounded shadow-md text-white"><i class="fa-solid fa-pen-to-square mr-3"></i>Edit Member Details</button>
+            </a>
+            <a href="#">
+              <button class="p-3 bg-pink-900 hover:bg-pink-700 rounded shadow-md text-white"><i class="fa-solid fa-print mr-3"></i> Print Member Details to A4</button>
+            </a>
+            <a href="#">
+              <button class="p-3 bg-blue-900 hover:bg-blue-700 rounded shadow-md text-white"><i class="fa-solid fa-address-card mr-3"></i>Print Membership Card</button>
+            </a>
+          </div>
+        {% else %}
+          <div>
+            <a href="{% url 'mem-dash' %}" class="mr-20">
+              <button class="p-3 bg-blue-900 hover:bg-blue-700 rounded shadow-md text-white"><i class="fa-solid fa-arrow-left-long mr-3"></i></i>Home/Back</button>
+            </a>
+            <a href="{% url 'mem-edit' member.gfxnumber %}">
+              <button class="p-3 bg-pink-900 hover:bg-pink-700 rounded shadow-md text-white"><i class="fa-solid fa-print mr-3"></i> Print Member Details to A4</button>
+            </a>
+            <a href="{% url 'mem-edit' member.gfxnumber %}">
+              <button class="p-3 bg-blue-900 hover:bg-blue-700 rounded shadow-md text-white"><i class="fa-solid fa-address-card mr-3"></i>Print Membership Card</button>
+            </a>
+          </div>
+        {% endif %}
+        <form method="POST" enctype="multipart/form-data" class="space-y-6 p-10" id="add-member" name="add-member-form">
+          {% csrf_token %}
+          <hr>
+          <div class="">
+            <div class="flex flex-wrap justify-center gap-20"> <!-------- flex for the top------------>
+              <div class="">
+                <label for="" class="text-red-500 font-bold">Regions:</label><br>
+                {{member.region}}
+              </div>
+              <div class="">
+                <label for="" class="text-red-500 font-bold">District:</label><br>
+                {{member.district}}
+              </div>
+              <div class="">
+                <label for="" class="text-red-500 font-bold">society:</label><br>
+                {{member.society}}
+              </div>
+            </div>
+            <div class="mt-10">
+              <section class="A">
+                <div class="">
+                  <h1 class="text-2xl font-bold text-red-700">PART A - MEMBERS PROFILE INFORMATION</h1>
+                  <hr>
+                  <div class="flex justify-between mt-10">
+                    <div>
+                      <label for="" class="text-red-500 font-bold">Title:</label><br>
+                      {{member.title}}
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap gap-5 mt-5">
+                    <div>
+                      <fieldset class="border rounded p-5">
+                        <legend class="text-green-700 font-bold">Full Name:</legend>
+                        <div class=" flex flex-wrap gap-7 w-full">
+                          <div class="">
+                            <label for="" class="text-red-500 font-bold">First Name:</label><br>
+                            {{member.firstname}}
+                          </div>
+                          <div class="">
+                            <label for="" class="text-red-500 font-bold">Middle Name:</label><br>
+                            {{member.middlename}}
+                          </div>
+                          <div class="">
+                            <label for="" class="text-red-500 font-bold">Last Name:</label><br>
+                            {{member.lastname}}
+                          </div>
+                          <div class="">
+                            <label for="" class="text-red-500 font-bold">Preferred Name:</label><br>
+                            {{member.preferredname}}
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+                    <div>
+                      <fieldset class="border rounded p-5">
+                        <legend class="text-green-700 font-bold">Date of Birth</legend>
+                        <div class=" flex flex-wrap gap-20 w-full">
+                          <div class="">
+                            <label for="" class="text-red-500 font-bold">Day:</label><br>
+                            {{member.day}}
+                          </div>
+                          <div class="">
+                            <label for="" class="text-red-500 font-bold">Month:</label><br>
+                            {{member.month}}
+                          </div>
+                          <div class="">
+                            <label for="" class="text-red-500 font-bold">Year:</label><br>
+                            {{member.year}}
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap gap-9 mt-5">
+                    <div>
+                      <div class="mt-10">
+                        <label for="" class="text-red-500 font-bold">Gender:</label><br>
+                        {{member.gender}}
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <div class="mt-10">
+                        <label for="" class="text-red-500 font-bold">Hometown:</label><br>
+                        {{member.hometown}}
+                      </div>
+                    </div>
+                    <div>
+                      <div class="mt-10">
+                        <label for="" class="text-red-500 font-bold">Address:</label><br>
+                        {{member.address}}
+                      </div>
+                    </div>
+                    <div>
+                      <div class="mt-10">
+                        <label for="" class="text-red-500 font-bold">Level of Education:</label><br>
+                        {{member.education}}
+                      </div>
+                    </div>
+                    <div>
+                      <div class="mt-10">
+                        <label for="" class="text-red-500 font-bold">Type of ID Card:</label><br>
+                      {{member.idtype}}
+                      </div>
+                    </div>
+                    <div>
+                      <div class="mt-10">
+                        <label for="" class="text-red-500 font-bold">ID Number:</label><br>
+                        {{member.idnum}}
+                      </div>
+                    </div>
+                    <div>
+                      <div class="mt-10">
+                        <label for="" class="text-red-500 font-bold">Phone Number:</label><br>
+                        {{member.phone}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap gap-5 mt-5">
+                    <div>
+                      <div class="mt-10">
+                        <label for="" class="text-red-500 font-bold">Marital Status:</label><br>
+                        {{member.marriage}}
+                      </div>
+                    </div>
+                    <div>
+                      <fieldset class="border rounded p-5">
+                        <legend class="text-green-700 font-bold">Spouse info:</legend>
+                        <h6 class="text-base italic"> if married and spouse still alive, provide info  here:</h6>
+                        <div class=" flex flex-wrap gap-10 w-full">
+                          <div class="">
+                            <label for="" class="text-red-500 font-bold">Spouse Full Name:</label><br>
+                            {{member.spousename}}
+                          </div>
+                          <div class="">
+                            <label for="" class="text-red-500 font-bold">Spouse Occupation:</label><br>
+                            {{member.spouseoccupation}}
+                          </div>
+                          <div class="">
+                            <label for="" class="text-red-500 font-bold">Spouse Telephone:</label><br>
+                            {{member.spousenumber}}
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+                    <div>
+                      <div class="mt-10">
+                        <label for="" class="text-red-500 font-bold">Next of Kin's Full name:</label><br>
+                        {{member.kinsname}}
+                      </div>
+                    </div>
+                    <div>
+                      <div class="mt-10">
+                        <label for="" class="text-red-500 font-bold">Relationship to next of kin:</label><br>
+                      {{member.kinsrelationship}}
+                      </div>
+                    </div>
+                    <div>
+                      <div class="mt-10">
+                        <label for="" class="text-red-500 font-bold">Next of Kin's Tel:</label><br>
+                        {{member.kinsnumber}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap gap-5 mt-5">
+                    <div>
+                      <div class="mt-10">
+                        <label for="" class="text-red-500 font-bold">Number of Family:</label><br>
+                        {{member.familysize}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <br>
+              <section class="B mt-10">
+                <div class="">
+                  <h1 class="text-2xl font-bold text-red-700">PART B - FARM INFORMATION</h1>
+                  <hr>
+                  <div>
+                    <div class="mt-10">
+                      <label for="" class="text-red-500 font-bold">Number of Farms:</label><br>
+                      {{member.farmnumber}}
+                    </div>
+                    <!---- Main work place-->
+                    <!---- Main work place-->
+                    <div class="mt-5">
+                      <div id="">
+                        <fieldset class="border rounded p-5">
+                          <legend class="text-green-700 font-bold">Farm one Details<span class="text-red-600 italic">(*)</span></legend>
+                          <div class="">
+                            <div class="mb-5">
+                              <label for="" class="text-red-500 font-bold">Owner of Farm:</label><br>
+                            {{member.farmowner}}
+                            </div>
+                            <div class=" flex flex-wrap gap-20 w-full">
+                              <div>
+                                <label for="" class="text-red-500 font-bold">Crop Cultivated:</label><br>
+                                {{member.crop}}
+                              </div>
+                              <div>
+                                <label for="" class="text-red-500 font-bold">Crop Cultivated:</label><br>
+                                {{member.farmsize}}
+                              </div>
+                              <div>
+                                <label for="" class="text-red-500 font-bold">Crop Cultivated:</label><br>
+                                {{member.location}}
+                              </div>
+                              <div>
+                                <label for="" class="text-red-500 font-bold">Crop Cultivated:</label><br>
+                                {{member.loc_latitude}}
+                              </div>
+                              <div>
+                                <label for="" class="text-red-500 font-bold">Crop Cultivated:</label><br>
+                                {{member.loc_longitude}}
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </div>
+
+                      <div id="">
+                        <fieldset class="border rounded p-5">
+                          <legend class="text-green-700 font-bold">Farm Two Details<span class="text-red-600 italic">(*)</span></legend>
+                          <div class="">
+                            <div class="mb-5">
+                              <label for="" class="text-red-500 font-bold">Owner of Farm:</label><br>
+                            {{member.farmowner2}}
+                            </div>
+                            <div class=" flex flex-wrap gap-20 w-full">
+                              <div>
+                                <label for="" class="text-red-500 font-bold">Crop Cultivated:</label><br>
+                                {{member.crop2}}
+                              </div>
+                              <div>
+                                <label for="" class="text-red-500 font-bold">Crop Cultivated:</label><br>
+                                {{member.farmsize2}}
+                              </div>
+                              <div>
+                                <label for="" class="text-red-500 font-bold">Crop Cultivated:</label><br>
+                                {{member.location2}}
+                              </div>
+                              <div>
+                                <label for="" class="text-red-500 font-bold">Crop Cultivated:</label><br>
+                                {{member.loc_latitude2}}
+                              </div>
+                              <div>
+                                <label for="" class="text-red-500 font-bold">Crop Cultivated:</label><br>
+                                {{member.loc_longitude2}}
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </div>
+
+                      <div id="">
+                        <fieldset class="border rounded p-5">
+                          <legend class="text-green-700 font-bold">Farm Three Details<span class="text-red-600 italic">(*)</span></legend>
+                          <div class="">
+                            <div class="mb-5">
+                              <label for="" class="text-red-500 font-bold">Owner of Farm:</label><br>
+                            {{member.farmowner3}}
+                            </div>
+                            <div class=" flex flex-wrap gap-20 w-full">
+                              <div>
+                                <label for="" class="text-red-500 font-bold">Crop Cultivated:</label><br>
+                                {{member.crop3}}
+                              </div>
+                              <div>
+                                <label for="" class="text-red-500 font-bold">Crop Cultivated:</label><br>
+                                {{member.farmsize3}}
+                              </div>
+                              <div>
+                                <label for="" class="text-red-500 font-bold">Crop Cultivated:</label><br>
+                                {{member.location3}}
+                              </div>
+                              <div>
+                                <label for="" class="text-red-500 font-bold">Crop Cultivated:</label><br>
+                                {{member.loc_latitude3}}
+                              </div>
+                              <div>
+                                <label for="" class="text-red-500 font-bold">Crop Cultivated:</label><br>
+                                {{member.loc_longitude3}}
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </div>
+
+                      <div id="">
+                        <fieldset class="border rounded p-5">
+                          <legend class="text-green-700 font-bold">Farm Four Details<span class="text-red-600 italic">(*)</span></legend>
+                          <div class="">
+                            <div class="mb-5">
+                              <label for="" class="text-red-500 font-bold">Owner of Farm:</label><br>
+                            {{member.farmowner4}}
+                            </div>
+                            <div class=" flex flex-wrap gap-20 w-full">
+                              <div>
+                                <label for="" class="text-red-500 font-bold">Crop Cultivated:</label><br>
+                                {{member.crop4}}
+                              </div>
+                              <div>
+                                <label for="" class="text-red-500 font-bold">Crop Cultivated:</label><br>
+                                {{member.farmsize4}}
+                              </div>
+                              <div>
+                                <label for="" class="text-red-500 font-bold">Crop Cultivated:</label><br>
+                                {{member.location4}}
+                              </div>
+                              <div>
+                                <label for="" class="text-red-500 font-bold">Crop Cultivated:</label><br>
+                                {{member.loc_latitude4}}
+                              </div>
+                              <div>
+                                <label for="" class="text-red-500 font-bold">Crop Cultivated:</label><br>
+                                {{member.loc_longitude4}}
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </div>
+
+                      <div id="">
+                        <fieldset class="border rounded p-5">
+                          <legend class="text-green-700 font-bold">Farm Five Details<span class="text-red-600 italic">(*)</span></legend>
+                          <div class="">
+                            <div class="mb-5">
+                              <label for="" class="text-red-500 font-bold">Owner of Farm:</label><br>
+                            {{member.farmowner5}}
+                            </div>
+                            <div class=" flex flex-wrap gap-20 w-full">
+                              <div>
+                                <label for="" class="text-red-500 font-bold">Crop Cultivated:</label><br>
+                                {{member.crop5}}
+                              </div>
+                              <div>
+                                <label for="" class="text-red-500 font-bold">Crop Cultivated:</label><br>
+                                {{member.farmsize5}}
+                              </div>
+                              <div>
+                                <label for="" class="text-red-500 font-bold">Crop Cultivated:</label><br>
+                                {{member.location5}}
+                              </div>
+                              <div>
+                                <label for="" class="text-red-500 font-bold">Crop Cultivated:</label><br>
+                                {{member.loc_latitude5}}
+                              </div>
+                              <div>
+                                <label for="" class="text-red-500 font-bold">Crop Cultivated:</label><br>
+                                {{member.loc_longitude5}}
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </div>
+                    
+                    </div>
+                    <!---- END Main work place-->
+                    <!---- END Main work place-->
+
+                    <div class="grid grid-cols-5 gap-7 mt-5">
+                      <div>
+                        <div class="mt-5">
+                          <label for="" class="text-red-500 font-bold">Years in Farming:</label><br>
+                          {{member.farmingyears}}
+                        </div>
+                      </div>
+                      <div>
+                        <div class="mt-5 w-72">
+                          <label for="" class="text-red-500 font-bold">Business before farming:</label><br>
+                        {{member.bbf}}
+                        </div>
+                      </div>
+                      <div>
+                        <div class="mt-5 w-72">
+                          <label for="" class="text-red-500 font-bold">Business aside farming now?:</label><br>
+                          {{member.baf}}
+                        </div>
+                      </div>
+                      <div>
+                        <div class="mt-5">
+                          <label for="" class="text-red-500 font-bold">Average Crop Yield (in bags):</label><br>
+                          {{member.averageyield}}
+                        </div>
+                      </div>
+                      <div>
+                        <div class="mt-5">
+                          <label for="" class="text-red-500 font-bold">Previous Crop yield (in bags):</label><br>
+                          {{member.previousyield}}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex flex-wrap gap-5 mt-5">
+                      <div>
+                        <div class="mt-10">
+                          <label for="" class="text-red-500 font-bold">Benefits from farm:</label><br>
+                          {{member.farmbenefit}}
+                        </div>
+                      </div>
+                      <fieldset class="border rounded p-2">
+                        <legend class="text-green-500 font-bold">Buyer Details</legend>
+                        <div>
+                          <div class="">
+                            <label for="" class="text-red-500 font-bold">Buyer of your produce:</label><br>
+                          {{member.buyerofproduce}}
+                          </div>
+                        </div>
+                        <div>
+                          <div class="">
+                            <label for="" class="text-red-500 font-bold">Number of times you sell to this buyer:</label><br>
+                          {{member.numberoftimes}}
+                          </div>
+                        </div>
+                        <div>
+                          <div class="">
+                            <label for="" class="text-red-500 font-bold">Benefits from the buyer:</label><br>
+                            {{member.buyerbenefits}}
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <br>
+              <section class="C">
+                <div>
+                  <h1 class="text-2xl font-bold text-red-700">PART C - FINANCIAL INFORMATION</h1>
+                  <hr>
+                  <div>
+                    <div class="flex flex-wrap gap-5 mt-5">
+                      <div>
+                        <div class="mt-10">
+                          <label for="" class="text-red-500 font-bold">How would you use the funds allocated to you?:</label><br>
+                          {{member.useoffund}}
+                        </div>
+                      </div>
+                      <div>
+                        <div class="mt-10">
+                          <label for="" class="text-red-500 font-bold">Bank Transacting with:</label><br>
+                          {{member.transactingbank}}
+                        </div>
+                      </div>
+                      <div>
+                        <div class="mt-10">
+                          <label for="" class="text-red-500 font-bold">Duration with the bank:</label><br>
+                          {{member.duration}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <br>
+              <section class="D">
+                <div>
+                  <h1 class="text-2xl font-bold text-red-700">PART D - INTEREST & DECLARATION</h1>
+                  <hr>
+                  <div>
+                    <div class="gap-5 mt-5">
+                      <div>
+                        <div class="mt-10">
+                          <label for="" class="text-red-500 font-bold">Association you part of:</label><br>
+                          {{member.partoffarmers}}
+                        </div>
+                      </div>
+                      <div>
+                        <div class="mt-10">
+                          <label for="" class="text-red-500 font-bold">Declaration:</label><br>
+                          {{member.declaration}} <label for="" class="text-xs ml-4 ">I, declare that all the information provided above are <span class="font-bold">True</span> to the best of my knowledge and <span class="font-bold">None</span> of it are <span class="font-bold">False</span></label>
+                        </div>
+                      </div>
+                      <div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,25 +1,8 @@
 {% extends "main/admin_base.html"%}
 {% load static %}
 {% block title%} Dues Addup page {% endblock%}
-{% block admin %}
+{% block page %}
 <section class="">
-    <center>
-        <br><br><br><br><br>
-        <div class="p-2 rounded h-full">
-            <div class="">
-                <h1 class="text-3xl font-italic text-red-900"> GNACOFA Dues Page</h1>
-                <form action="#" method="POST" class=" gap-10 p-5">
-                    {% csrf_token %}
-                    <div>
-                        <center></center>
-                    </div>
-                    <!-------------------------------------------------------------->
-                    <div class="mt-4">
-                        <button type="submit" class="p-2 bg-black rounded shadow-lg text-white w-32">Submit | forms</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </center>
+   
 </section>
 {%endblock%}

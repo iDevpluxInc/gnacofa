@@ -1,0 +1,22 @@
+{% extends "base.html" %} 
+{% block title %} Logout Staff {% endblock %} 
+{% block content %}
+<section class="bg-white p-4">
+  <br><br><br><br>
+  <div class="min-h-screen bg-gray-100 flex flex-col justify-center">
+        <div class="w-full mx-auto">
+            <div class="max-w-md w-full  shadow-lg mx-auto mt-4 bg-white rounded-md p-8 border border-gray-300">
+                <div class="space-y-6">
+                    {% csrf_token %}
+                    <div class="">
+                        <center>
+                            <label class="font-bold text-2xl text-green-600 block">You have successfully logout.....</label>
+                            <p class="text-base text-gray-400">Need to log right back in? | <a href="{% url 'admin-dashboard'%}" class=" hover:text-gray-700">Click here</a></p>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

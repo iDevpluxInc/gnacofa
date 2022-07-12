@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'theme',
     #'django_browser_reload',
     'crispy_forms',
+    "crispy_tailwind",
+    'crm.apps.CrmConfig',
     'Admin.apps.AdminConfig',
     'members.apps.MembersConfig',
     'gnacofaapp.apps.GnacofaappConfig',
@@ -56,6 +58,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'storages',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -152,8 +155,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CRISPY_TEMPLATE_PACK = 'uni_form'
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+
+CRISPY_TEMPLATE_PACK = "tailwind"
 LOGIN_REDIRECT_URL = 'member'
+
+api_key = 'R2dBbXpOV09qWmZqelpCUklJWkM'
+sms_header = 'GNACOFA-GH'
 
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')

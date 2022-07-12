@@ -7,35 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet"  href="{% static 'css/style.min.css'%}">
     <link rel="stylesheet"  href="{% static 'css/stylll.css'%}">
+    <link rel="stylesheet"  href="{% static 'css/crm1.css'%}">
     <link rel="stylesheet"  href="{% static 'css/manage.css'%}">
     <link rel=" shortcut icon"  href="{% static 'workimg/imgs/logo2.png' type='image/x-icon'%}">
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.5/dist/flowbite.min.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     
     <!---------NEW from react-------->
-    
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-
     <!-- CSS only -->
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-    
     <title>{% block title %}Home{% endblock %}</title>
     
   </head>
   <body>
-    <section class="bg-black  text-white   p-2">
+    <section class="bg-black text-white p-2">
       <div class="container mx-auto flex items-center justify-center xs:justify-center sm:justify-center ">
         <div class="flex flex-wrap sm:flex-row md:gap-20 lg:gap-20 xs:gap-5 sm:gap-5 xs:justify-center sm:justify-center justify-between">
-          <div class="flex flex-row gap-2 justify-center mt-3">
-            <h1> follow us on: </h1>
-            <a href="#" class=""><img src="{% static 'workimg/icons/icons8-facebook-48.png'%}" width="50%"/></a>
-            <a href="#" class=""><img class="hover:bg-blue-600" src="{% static 'workimg/icons/icons8-twitter-50.png'%}" width="50%"/></a>
+          <div class="mt-3 sm:ml-8">
+            <h1> follow us on: <span><a href="#"><i class="fa-brands fa-twitter-square text-xl ml-3 mr-5"></i></a></span> <span><a href="#"><i class="fa-brands fa-facebook text-xl mr-5"></i></a></span><span><a href="#"><i class="fa-brands fa-whatsapp text-xl mr-2"></i></a><label for="" class="text-green-400 hover:text-white">(+233)- 0240745381</label></span></h1>
           </div>
           <div class="flex flex-wrap">
             <div class="mt-3">
-              <a href="#" class=""><img src="{% static 'workimg/icons/icons8-clock-64.png'%}" width="40%"/></a>
+              <i class="fa-solid fa-business-time"></i>
             </div>
             <div>
               <h1>Working Days: <span>Modays - Fridays </span></h1>
@@ -44,10 +40,10 @@
           </div>
           <div class="justify-center flex flex-wrap">
             <div class="mt-3">
-              <a href="#" class=""><img src="{% static 'workimg/icons/icons8-email-64.png'%}" width="30%"/></a>
+              <i class="fa-solid fa-envelope mr-2"></i>
             </div>
             <div>
-              <h1>Email Address: <span><a href="mailto:president.gnacofa@outlook.com">President.gnacofa@outlook.com</a></span></h1>
+              <h1><span><a href="mailto:president.gnacofa@outlook.com">President.gnacofa@outlook.com</a></span></h1>
               <h1 class="text-center"><span><a href="mailto:ghgnacofa10@gmail.com">ghgnacofa10@gmail.com</a> </span></h1>
             </div>
           </div>
@@ -78,37 +74,22 @@
             <div class="" >
               <ul class="flex flex-row gap-2">
                 <li class="rounded p-2 shadow-lg">
-                  <a href="{% url 'admin:index'%}" class="text-white flex justify-center flex-row mt-2 hover:text-green-700 hover:font-underline">
-                    <label><span> << </span>Staff Portal <span> >> </span></label>
+                  <a href="{% url 'member-dashboard'%}" class="text-white flex justify-center flex-row mt-2 hover:text-green-500">
+                    <label><span> >> </span><i class="fa-solid fa-user-shield mr-1"></i>Member Portal</label>
                   </a>
                 </li>
                 <li class="rounded p-2 shadow-lg">
-                  <a href="#" class="text-white flex justify-center flex-row mt-2 hover:text-green-500">
-                    <label><span> >> </span>Member Portal</label>
+                  <a href="{% url 'admin-dashboard' %}" class="text-white flex justify-center flex-row mt-2 hover:text-green-500">
+                    <label><span> >> </span><i class="fa-solid fa-building-lock mr-1"></i>Admin Portal</label>
                   </a>
-                </li>
-                <li class="rounded p-2 shadow-lg">
-                  <a href="{% url 'login'%}" class="text-white flex justify-center flex-row mt-2 hover:text-green-500">
-                    <label><span> >> </span>Register New Member</label>
-                  </a>
-                </li>
-                <li class="rounded p-2 shadow-lg">
-                  <a href="{% url 'administrator' %}" class="text-white flex justify-center flex-row mt-2 hover:text-green-500">
-                    <label><span> >> </span>Administrator</label>
-                  </a>
-                </li>
-                <li class="rounded p-2 shadow-lg">
-                  <a href="#" class="text-white flex justify-center flex-row mt-2 hover:text-green-500">
-                    <label><span> >> </span>Admin Portal</label>
-                  </a>
-                </li>      
+                </li>     
               </ul>
             </div>
           </div>
         </div>
       </div>
     </section>
-
+    <!------ // Headers (Navigation Bar) //-->
     <section class="md:sticky top-0 z-10 justify-center container mx-auto ">
       <div class="header absolute rounded-b-xl shadow-2xl container mx-auto">
         <img class="ml-25 im" src="{% static 'workimg/imgs/logo2.png'%}" width="3%"/>
@@ -118,53 +99,37 @@
         <nav class="navbar">
           <ul>
             {% if user.is_authenticated %}
-            <li><a href="{% url 'logout'%}">Logout</a></li>
+            <li><a class="p-2 rounded text-red-600 text-xl" href="{% url 'logout'%}"><i class="fa-solid fa-right-from-bracket mr-2"></i>Logout</a></li>
             {% else %}
-            <li class="active"><a href="{% url 'home'%}">Home</a></li>
-            <li><a href="#">About-us</a>
+            <li class="active"><a href="{% url 'home'%}"><i class="fa-solid fa-house mr-2"></i>Home</a></li>
+            <li><a href="#"><i class="fa-solid fa-house-signal mr-2"></i>About-us</a>
               <ul>
                 <li><a href="{% url 'about'%}">About us</a></li>
                 <li><a href="{% url 'our-managment'%}">Management</a></li>
                 <li><a href="{% url 'our-structure'%}">Structure</a></li>
               </ul>
             </li>
-            <li><a href="#">Archieves</a>
+            <li><a href="#"><i class="fa-solid fa-box-archive mr-2"></i>Archieves</a>
               <ul>
                 <li><a href="{% url 'archieves'%}">Archieves</a></li>
                 <li><a href="{% url 'projects'%}">Projects</a></li>
               </ul>
             </li>
-            <li><a href="#">Media Center</a>
+            <li><a href="#"><i class="fa-brands fa-medium mr-2"></i>Media Center</a>
               <ul>
                 <li><a href="{% url 'news'%}">News</a></li>
                 <li><a href="{% url 'events'%}">Events</a></li>
                 <li><a href="{% url 'photos'%}">Galleries</a></li>
               </ul>
             </li>
-            <li class="bg-red-500 hover:bg-red-700 rounded-lg"><a href="{% url 'contact-us'%}" >Lets Talk</a></li>
-            <li><a href="{% url 'faqs'%}">FAQs</a></li>
-            <li><a href="{% url 'covid-update'%}">Covid-19</a></li>
+            <li class="bg-red-500 hover:bg-red-700 rounded-lg"><a href="{% url 'contact-us'%}"><i class="fa-solid fa-walkie-talkie mr-2"></i>Lets Talk</a></li>
+            <li><a href="{% url 'faqs'%}"><i class="fa-solid fa-question mr-2"></i>FAQs</a></li>
+            <li><a href="{% url 'covid-update'%}"><i class="fa-solid fa-head-side-mask mr-2"></i>Covid-19</a></li>
             {% endif %}
           </ul>
         </nav>
       </div>
     </section>
-
-    <div class="container mx-auto z-10 absolute">
-    {% if messages%}
-      {% for message in messages %}
-        {% if message.tags == 'success' %}
-          <div class="bg-green-400 border-2 p-2 rounded shadow-lg border-green-600">
-            {{message}}
-          </div>
-        {% elif message.tags == 'error' %}
-          <div class="bg-red-400 border-2 p-2 rounded shadow-lg border-red-600">
-            {{message}}
-          </div>
-        {% endif %}
-      {% endfor %}
-    {% endif %}
-    </div>
     
     <div class="">{% block content %} {% endblock %}</div>
     <!-------------------Footer------------------------------------------------------>
@@ -185,30 +150,30 @@
               </div>
             </div>
             <div class="">
-              <h4 class="text-red-800">Other Useful Links</h4>
+              <h4 class="text-red-500">Other Useful Links</h4>
               <div class="ml-5 list-none">
-                <li><a class="hover:text-gray-100" href="/">Admin </a></li>
+                <li><a class="hover:text-gray-100" href="{% url 'admin-dashboard'%}"><i class="fa-solid fa-building-lock mr-1"></i>Admin Portal </a></li>
                 <hr/>
-                <li><a class="hover:text-gray-100" href="#">Member Login </a></li>
+                <li><a class="hover:text-gray-100" href="{% url 'admin-dashboard'%}"><i class="fa-solid fa-user-shield mr-1"></i>Member Login </a></li>
                 <hr/>
-                <li><a class="hover:text-gray-100" href="#">Archives</a></li>
+                <li><a class="hover:text-gray-100" href="{% url 'archieves'%}">Archives</a></li>
                 <hr/>
-                <li><a class="hover:text-gray-100"  href="#">Events</a></li>
+                <li><a class="hover:text-gray-100"  href="{% url 'events'%}">Events</a></li>
                 <hr/>
-                <li><a class="hover:text-gray-100" href="#">News</a></li>
+                <li><a class="hover:text-gray-100" href="{% url 'news'%}">News</a></li>
                 <hr/>
-                <li><a class="hover:text-gray-100" href="/">Covid-19 Updates</a></li>
+                <li><a class="hover:text-gray-100" href="{% url 'covid-update'%}">Covid-19 Updates</a></li>
                 <hr/>
-                <li><a class="hover:text-gray-100" href="#">Projects</a></li>
+                <li><a class="hover:text-gray-100" href="{% url 'projects'%}">Projects</a></li>
                 <hr/>
-                <li><a class="hover:text-gray-100" href="#">Media Partners & Sponsors</a></li>
+                <li><a class="hover:text-gray-100" href="{% url 'events'%}">Media Partners & Sponsors</a></li>
                 <hr/>
-                <li><a class="hover:text-gray-100" href="#">Other Agency of GNACOFA</a></li>
+                <li><a class="hover:text-gray-100" href="{% url 'projects'%}">Other Agency of GNACOFA</a></li>
               </div>
             </div>  
 
              <div class="">
-              <h4 class="text-red-800">Regions Operated Links</h4>
+              <h4 class="text-red-500">Regions Operated Links</h4>
               <div class="ml-5 list-none">
                 <li><a class="hover:text-gray-100" href="#">Ashanti Region</a></li>
                 <hr/>
@@ -232,21 +197,33 @@
               </div>
             </div>
             <div class="">
-              <h4 class="text-red-800">Contact-US</h4>
-              <div class="ml-2 list-none">
-                <h6 class="text-left">GHANA NATIONAL COCOA FARMER'S ASSOCIATION,<br/> P.O.BOX 5984 KUMASI, KWADWOBIOWUOKROM -AKROPONG,  <br/>ATWIMA NWABIAGYA DISTRICT, ASHANTI REGION, 00233, Ghana</h6>
-                <div class="mt-3 mr-3">
-                  <a href="#" class=""><img src="{% static 'workimg/icons/icons8-ringer-volume-24.png'%}" width="5%"/></a>
-                </div>
-                <div>
-                  <h1> <span>+233</span> (0) 240 745 381</h1>
-                  <h1> <span>+233</span> (0) 240 745 381</h1>
-                </div>
-
-
-                <div class="">
+              <h4 class="text-red-500">Contact-US</h4>
+              <div class="ml-2 list-none text-lg">
+               <h6 class="text-left"> <i class="fa-solid fa-location-dot mr-3"></i> GHANA NATIONAL COCOA FARMER'S ASSOCIATION,<br/> P.O.BOX 5984 KUMASI, KWADWOBIOWUOKROM -AKROPONG,  <br/>ATWIMA NWABIAGYA DISTRICT, ASHANTI REGION, 00233, Ghana</h6>
+                
+               <div class="flex flex-row gap-2 mt-5">
                   <div class="mt-3">
-                    <a href="#" class=""><img src="{% static 'workimg/icons/icons8-email-64.png'%}" width="5%"/></a>
+                    <i class="fa-solid fa-phone "></i>
+                  </div>
+                  <div>
+                    <h1> <span></i>+233</span> (0) 240 745 381</h1>
+                    <h1> <span>+233</span> (0) 240 745 381</h1>
+                  </div>
+                </div> 
+               
+               <div class="flex flex-row gap-2 mt-5">
+                  <div class="mt-3">
+                    <i class="fa-solid fa-phone "></i>
+                  </div>
+                  <div>
+                    <h1> <span></i>+233</span> (0) 240 745 381</h1>
+                    <h1> <span>+233</span> (0) 240 745 381</h1>
+                  </div>
+                </div>
+                
+                <div class="flex flex-row gap-2 mt-5">
+                  <div class="mt-3">
+                    <i class="fa-solid fa-envelope"></i>
                   </div>
                   <div>
                     <h1><span><a class="hover:text-red-900"href="mailto:president.gnacofa@outlook.com">President.gnacofa@outlook.com</a></span></h1>
@@ -267,12 +244,12 @@
                 <h6>Copyright &copy; 1992- 2022, Ghana National Cocoa Farmers Association (GNACOFA) <span>All Rights Reserved</span></h6>
               </div>
               <div class="flex flex-wrap gap-4 hover:text-green-500">
-                <label class="text-white "><a class="hover:text-green-400" href="{% url 'home'%}">Home</a></label>
-                <label class="text-white "><a class="hover:text-green-400" href="{% url 'about'%}">About</a></label>
-                <label class="text-white "><a href="{% url 'faqs'%}">FAQs</a></label>
-                <label class="text-white "><a href="{% url 'contact-us'%}">Contact-US</a></label>
-                <label class="text-white "><a href="#">Privacy | Policy</a></label>
-                <h6 class="text-green-600"><span >Designed by: <a class="text-white hover:text-red-700" href="#">avtex.org</a></span></h6>
+                <label class="text-white "><a class="hover:text-green-400" href="{% url 'home'%}"><i class="fa-solid fa-house mr-2"></i>Home</a></label>
+                <label class="text-white "><a class="hover:text-green-400" href="{% url 'about'%}"><i class="fa-solid fa-house-signal mr-2"></i>About</a></label>
+                <label class="text-white "><a href="{% url 'faqs'%}"><i class="fa-solid fa-question mr-2"></i>FAQs</a></label>
+                <label class="text-white "><a href="{% url 'contact-us'%}"><i class="fa-solid fa-address-book mr-2"></i>Contact-US</a></label>
+                <label class="text-white "><a href="#"><i class="fa-solid fa-key mr-2"></i>Privacy | Policy</a></label>
+                <h6 class="text-green-600"><span >Designed by: <a class="text-white hover:text-red-700 text-sm" href="#">avtex.org</a></span></h6>
               </div>
             </div>
           </div>
@@ -284,6 +261,8 @@
     <script src="{% static 'jq.jquery.js'%}"></script>
     <script src="https://unpkg.com/flowbite@1.4.5/dist/flowbite.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-    <script type="text/javascript" src="{% static 'js/main.js'%}"></script>
+    <script src="{% static 'js/main.js'%}"></script>
+    <script src="{% static 'js/crmnew.js'%}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
   </body>
 </html>

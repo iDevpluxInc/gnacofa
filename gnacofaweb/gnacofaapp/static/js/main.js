@@ -2,7 +2,7 @@
 
 //document.addEventListener('contextmenu',event => event.preventDefault());
 
-// FUNCTION FOR ID DISPLAY BOX
+// FUNCTION FOR ID DISPLAY BOX 
 function changeStatus(){
   var status = document.getElementById("id");
   if (status){

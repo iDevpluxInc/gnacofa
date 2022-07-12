@@ -1,0 +1,97 @@
+{% extends "base.html" %} 
+{% block title %} Member Page {% endblock %} 
+{% block content %}
+<section class="bg-white p-4">
+  <br><br><br><br>
+  <div class="p-5">
+    <div class="justify-center">
+      <h1 class="text-green-900 text-center font-bold space-y-6 text-2xl">Gnacofa Member View Page</h1>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi sit quos, voluptatum quisquam hic vero, similique quasi quas provident praesentium neque nulla sunt modi illo rerum voluptas laborum fugit laboriosam? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas, aut, quo magnam sint numquam doloremque laborum temporibus dolorum, quod commodi sit error quam? Error, vel ab similique maxime illo iusto. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut nemo nulla porro commodi unde, aliquid ipsum vitae. Tempora aliquam, necessitatibus at adipisci assumenda ea! Doloribus laudantium obcaecati consectetur facere eos.</p>
+    </div>
+    <div class="w-full rounded shadow-md p-3 flex flex-row gap-2">
+      <div class="">
+        <form action="" class="space-y-6 flex flex-row gap-2" method="POST">
+          <div class="">
+            <label class="font-bold text-sm text-gray-600 block">Search Member: </label>
+            <input type="text" class=" w-full p-2 border border-gray-300 round-lg mt-1" placeholder="Search member"/>
+          </div>
+                    
+          <div class="flex justify-center">
+            <button type='submit' class="w-full py-2 px-4 bg-blue-900 hover:bg-blue-600 rounded border border-gray-300 p-2 text-white">Search Member</button>
+          </div>
+        </form>
+      </div>
+      <div class="mt-6">
+        <div class="flex justify-center">
+            <button class="w-full py-2 px-4 bg-green-600 hover:bg-green-900 rounded border border-gray-300 p-2 text-white"><a href="{% url 'mem-add'%}">Add/Register Member</a></button>
+          </div>
+      </div>
+    </div>
+    <div class="p-10">
+      <div class="p-2">
+        {% if search %}
+          <center><h2 class="text-left "> Your searched results are: </h2></center>
+            {{search}}
+          {% for member in member %}
+            {{member}}
+          {% endfor %}
+          {%else%}
+        {% endif %}
+      </div>
+      <div class=" overflow-scroll" style="height: 960px; width:1700px">
+        <table class="w-full text-sm text-left text-black dark:text-black">
+          <thead class="text-xs text-green-700 uppercase bg-gray-50 dark:bg-green-700 dark:text-gray-400 sticky top-1">
+            <tr>
+              <th scope="col" class="px-6 py-3">GFX Number</th>
+              <th scope="col" class="px-6 py-3">Region of Farmer</th>
+              <th scope="col" class="px-6 py-3">District of Farmer</th>
+              <th scope="col" class="px-6 py-3">Society</th>
+              <th scope="col" class="px-6 py-3">Title</th>
+              <th scope="col" class="px-6 py-3">Full Name</th>
+              <th scope="col" class="px-6 py-3">Gender</th>
+              <th scope="col" class="px-6 py-3">Date of Birth</th>
+              <th scope="col" class="px-6 py-3">Marital Status</th>
+              <th scope="col" class="px-6 py-3">Hometown</th>
+              <th scope="col" class="px-6 py-3">Address</th>
+              <th scope="col" class="px-6 py-3">Phone Number</th>
+              <th scope="col" class="px-6 py-3">Number of Farms</th>
+              <th scope="col" class="px-6 py-3">
+                <span class="sr-only">Edit</span>
+              </th>
+              <th scope="col" class="px-6 py-3">
+                <span class="sr-only">Edit</span>
+              </th>
+            </tr>
+          </thead>
+
+          {% for member in member %}
+          <tbody class="">
+            <tr class=" bg-yellow-50 border-b dark:border-gray-700">
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-green-600 whitespace-nowrap">{{member.gfxnumber}}</th>
+              <td class="px-6 py-4">{{member.region}}</td>
+              <td class="px-6 py-4">{{member.district}}</td>
+              <td class="px-6 py-4">{{member.society}}</td>
+              <td class="px-6 py-4">{{member.title}}</td>
+              <td class="px-6 py-4">{{member.firstname}} {{member.middlename}} {{member.lastname}}</td>
+              <td class="px-6 py-4">{{member.gender}}</td>
+              <td class="px-6 py-4">{{member.day}} {{member.month}} {{member.year}}</td>
+              <td class="px-6 py-4">{{member.marriage}}</td>
+              <td class="px-6 py-4">{{member.hometown}}</td>
+              <td class="px-6 py-4">{{member.address}}</td>
+              <td class="px-6 py-4">{{member.phone}}</td>
+              <td class="px-6 py-4">{{member.farmnumber}}</td>
+              <td class="px-6 py-4 text-right">
+                <a href="{% url 'edit-view' member.id %}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>
+              </td>
+              <td class="px-6 py-4 text-right">
+                <a href="{% url 'edit-view' member.id %}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+              </td>
+            </tr>
+          </tbody>
+          {% endfor %}                 
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

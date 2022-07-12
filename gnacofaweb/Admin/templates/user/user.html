@@ -1,0 +1,40 @@
+{% extends "main/admin_base.html"%}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title%} Administrator {% endblock%}
+{% block admin-page %}
+<section class="bg-white">
+    <p class="text-3xl text-red-900 uppercase font-bold">gnacofa Administrative page</p>
+    <p class="text-lg  text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio cupiditate rerum qui unde quidem eveniet assumenda dicta voluptatem voluptatum. Doloremque dicta illo ipsum adipisci officiis ullam harum nulla atque dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt aut doloribus asperiores totam! Ad nam quisquam tempore, dolor incidunt praesentium iusto fuga! Molestiae voluptatum consectetur temporibus perferendis, magni obcaecati. Voluptatem? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate maiores eveniet neque. Eos ea animi laboriosam, illo ipsam obcaecati nesciunt nemo et a veniam perferendis id itaque natus, architecto nam.</p>
+    <hr>
+    <div class="min-h-screen bg-gray-100 flex flex-col">
+        <div class="max-w-lg w-full mx-auto">
+            <div class="text-center font-bold mt-1 text-red-900 text-3xl">User/Staff Creation Form</div>
+            <div class="max-w-md w-full  shadow-lg mx-auto mt-4 bg-white rounded-md p-8 border border-gray-300">
+                <form action="" class="space-y-6" method="POST">
+                    {% csrf_token %}
+                    <div>
+                        <div class="">
+                        {{form.username|as_crispy_field}}
+                        </div>
+                        <div class="">
+                            {{form.password1|as_crispy_field}}
+                        </div>
+                        <div class="">
+                            {{form.password2|as_crispy_field}}
+                        </div>
+                        <div class="flex flex-wrap p-2 gap-5">
+                            {{form.is_active|as_crispy_field}} | {{form.is_staff|as_crispy_field}}
+                        </div>
+                        <p class="p-2 text-xs">Note** Click to move to the next phase to </p>
+                        <div class="flex justify-center">
+                            <button type='submit' class="w-full py-2 px-4 bg-gray-800 hover:bg-gray-600 rounded border border-gray-300 p-2 text-white">Proceed to staff info and profile</button>
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{%endblock%}

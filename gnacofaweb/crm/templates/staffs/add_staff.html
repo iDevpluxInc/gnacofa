@@ -1,0 +1,77 @@
+{% extends "main/admin_base.html"%}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title%} Administrator {% endblock%}
+{% block admin-page %}
+<section class=" w-full bg-white">
+    <center>
+        <br><br><br><br><br>
+        <div class="p-2 rounded h-full">
+            <div class="">
+                <h1 class="text-6xl text-red-900"> GNACOFA Staff Add Page</h1>
+                <form action="#" method="POST" enctype="multipart/form-data" class=" gap-10 p-5">
+                    {% csrf_token %}
+                    <div class="p-10">
+                        <section class="rounded border p-5">
+                            <div class="staffid flex flex-wrap gap-5">
+                                {{form.staff_id|as_crispy_field}}
+                                {{form.region|as_crispy_field}}
+                                {{form.district|as_crispy_field}}
+                                {{form.society|as_crispy_field}}
+                                {{form.access_user|as_crispy_field}}
+                            </div>
+                            <hr>
+                            <div>{{form.title|as_crispy_field}}</div>
+                            <div class="flex flex-wrap gap-10">
+                                <div class="mt-10">{{form.firstName|as_crispy_field}}</div>
+                                <div class="mt-10">{{form.middleName|as_crispy_field}}</div>
+                                <div class="mt-10">{{form.lastName|as_crispy_field}}</div>
+                                <fieldset class="rounded border p-5">
+                                    <legend>Date of Birth</legend>
+                                    <div class="flex flex-wrap gap-20">
+                                        {{form.day|as_crispy_field}}
+                                        {{form.month|as_crispy_field}}
+                                        {{form.year|as_crispy_field}}
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="flex flex-wrap gap-5">
+                                <div class="mt-12 flex flex-wrap gap-10">
+                                    {{form.gender|as_crispy_field}}
+                                    {{form.id_type|as_crispy_field}}
+                                    {{form.id_number|as_crispy_field}}
+                                    {{form.staff_image|as_crispy_field}}
+                                    {{form.hometown|as_crispy_field}}
+                                    {{form.home_region|as_crispy_field}}
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-5 mt-5">
+                               {{form.telephone|as_crispy_field}} 
+                               {{form.address|as_crispy_field}} 
+                               {{form.department|as_crispy_field}}
+                               {{form.position|as_crispy_field}}
+                               <fieldset class="rounded border p-5">
+                                    <legend>Emergency Contact Person</legend>
+                                    <div class="flex flex-wrap gap-5">
+                                        {{form.emergency_person|as_crispy_field}}
+                                        {{form.emergency_phone|as_crispy_field}}
+                                        {{form.relationship|as_crispy_field}}
+                                        {{form.emergency_address|as_crispy_field}}
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </section>
+                        <hr>
+                    </div>
+                    <!--------------------//  Submit button //---------------->
+                    <div class="mt-4 flex flex-wrap p-2 gap-10 justify-center">
+                        <a href="{% url 'staff'%}" name="" class="p-3 rounded shadow-lg  text-white bg-red-600 hover:bg-red-800"><i class="fa-solid fa-ban mr-3"></i>Cancel Application</a>
+
+                        <button type="submit" class="p-2 bg-black rounded shadow-lg text-white w-32">Submit | forms</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </center>
+</section>
+{% endblock %}
