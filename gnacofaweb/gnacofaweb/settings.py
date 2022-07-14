@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     # 'adminlte3',
     # 'adminlte3_theme',
     #'tailwind',
-    'theme',
+    #'theme',
     #'django_browser_reload',
     'crispy_forms',
     "crispy_tailwind",
@@ -158,7 +158,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 
 CRISPY_TEMPLATE_PACK = "tailwind"
-LOGIN_REDIRECT_URL = 'member'
+#LOGIN_REDIRECT_URL = 'member'
 
 api_key = 'R2dBbXpOV09qWmZqelpCUklJWkM'
 sms_header = 'GNACOFA-GH'
@@ -172,11 +172,13 @@ AWS_DEFAULT_ACL = None
 
 DEFAULT_FILE_STORAGES = 'storages.backends.s3boto3.S3Boto3Storage'
 
+
+
+'''
 TAILWIND_APP_NAME = 'theme'
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
-
 JAZZMIN_UI_TWEAKS = {
     "site_header": "GNACOFA Admin Panel",
     "site_title": "GNACOFA ADMIN PANEL",
@@ -187,3 +189,4 @@ JAZZMIN_UI_TWEAKS = {
     "custom_js": "common/js/main.js"
 
 }
+'''
